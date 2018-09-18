@@ -1,4 +1,14 @@
 <div data-controller="book">
  <h1 data-target="book.output"></h1>
 </div>
-<%= @first_book.title.titleize %> - <%= @first_book.authors %>
+<section>
+  <ul>
+    <% @books.each do |book| %>
+    <li style="display:block">
+      <%= book.title.titleize %>
+      <%= book.authors %>
+      <img src="<%= book.image_link(:zoom => 1) %>" alt="">
+    </li>
+    <% end %>
+  </ul>
+</section>
