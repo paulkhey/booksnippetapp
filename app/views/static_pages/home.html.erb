@@ -4,10 +4,9 @@
 <section>
   <ul>
     <% @books.each do |book| %>
-    <li style="display:block">
-      <%= book.title.titleize %>
-      <%= book.authors %>
-      <img src="<%= book.image_link(:zoom => 1) %>" alt="">
+    <li>
+      <strong><%= book.title.titleize %></strong> by <%= book.authors %>
+    <!--<img src="<%= book.image_link(:zoom => 1) %>" alt=""> -->
     </li>
     <% end %>
   </ul>
