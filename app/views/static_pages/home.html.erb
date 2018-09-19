@@ -4,7 +4,7 @@
 <section>
   <ul>
   <% @books.map do |book| %>
-    <% if book.title && book.image_link && !book.authors.empty? %>
+    <% if eval @book_fields_present %>
     <li>
       <strong><%= book.title.titleize %></strong>
       <%= "- #{book.authors}" %>
