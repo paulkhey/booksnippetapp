@@ -1,6 +1,6 @@
 <div style="text-align: center" data-controller="book">
  <h1 data-target="book.output"></h1>
- <p style="font-style:italic"><%= @search_number %> results for "<%= @my_search %>"...<br><br></p>
+ <p style="font-style:italic"><%= @search_number %> results for <strong>"<%= @my_search %>..."</strong><br><br></p>
 </div>
 
 <section class="search">
@@ -9,7 +9,7 @@
     <div class="search__result">
       <img class="search__image" src="<%= book.image_link(:zoom => 1, :curl => true) %>" alt="<%= book.title %>">
       <div class="search__info">
-        <p class="search__title"><%= truncate(book.title.titleize, :length => 40) %><p>
+        <p class="search__title"><%= truncate(book.title.titleize, :length => 75) %><p>
         <p class="search__author"><%= book.authors %></p>
       </div>
     </div>
