@@ -9,7 +9,7 @@
     <div class="search__result">
       <img class="search__image" src="<%= book.image_link(:zoom => 1, :curl => true) %>" alt="<%= book.title %>">
       <div class="search__info">
-        <p class="search__title"><%= truncate(book.title.titleize, :length => 75) %><p>
+        <p class="search__title"><%= truncate(book.title.titleize, :length => 62) %><p>
         <p class="search__author"><%= book.authors %></p>
       </div>
     </div>
