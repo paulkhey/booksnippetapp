@@ -9,7 +9,7 @@
       <strong><%= book.title.titleize %></strong>
       <%= "- #{book.authors}" %>
       <br>
-      <img src="<%= book.image_link(:zoom => 1) %>" alt="">
+      <img src="<%= book.image_link(:zoom => 1, :curl => true) %>" alt="<%= book.title %>">
     </li>
     <% end %>
   <% end %>
