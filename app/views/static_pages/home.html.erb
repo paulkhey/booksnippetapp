@@ -1,19 +1,20 @@
-<div data-controller="book">
+<div style="text-align: center" data-controller="book">
  <h1 data-target="book.output"></h1>
+ <p style="font-style:italic"><%= @search_number %> results for "<%= @my_search %>"...<br><br></p>
 </div>
-<section>
-  <ul>
+
+<section class="search">
   <% @books.map do |book| %>
     <% if eval @book_fields_present %>
-    <li>
-      <strong><%= book.title.titleize %></strong>
-      <%= "- #{book.authors}" %>
-      <br>
-      <img src="<%= book.image_link(:zoom => 1, :curl => true) %>" alt="<%= book.title %>">
-    </li>
+    <div class="search__result">
+      <img class="search__image" src="<%= book.image_link(:zoom => 1, :curl => true) %>" alt="<%= book.title %>">
+      <div class="search__info">
+        <p class="search__title"><%= truncate(book.title.titleize, :length => 40) %><p>
+        <p class="search__author"><%= book.authors %></p>
+      </div>
+    </div>
     <% end %>
   <% end %>
-  </ul>
 </section>
 
 
