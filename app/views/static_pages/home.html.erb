@@ -3,11 +3,17 @@
 </div>
 <section>
   <ul>
-    <% @books.each do |book| %>
+  <% @books.map do |book| %>
+    <% if book.title && book.image_link && !book.authors.empty? %>
     <li>
-      <strong><%= book.title.titleize %></strong> by <%= book.authors %>
-    <!--<img src="<%= book.image_link(:zoom => 1) %>" alt=""> -->
+      <strong><%= book.title.titleize %></strong>
+      <%= "- #{book.authors}" %>
+      <br>
+      <img src="<%= book.image_link(:zoom => 1) %>" alt="">
     </li>
     <% end %>
+  <% end %>
   </ul>
 </section>
+
+
