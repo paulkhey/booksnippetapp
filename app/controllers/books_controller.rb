@@ -5,11 +5,9 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @mybooks = Book.all
-    
     @my_search = 'Great Gatsby'
-    @search_number = 10
     @book_fields_present = 'book.title && book.image_link && !book.authors.empty?'
-    @books = GoogleBooks.search(@my_search, {:count => @search_number})
+    @books = GoogleBooks.search(@my_search, {:count => 10})
   end
 
   # GET /books/1

@@ -32,12 +32,25 @@
 <br>
 <br>
 <hr>
+<br>
 
 
 <div style="text-align: center" data-controller="book">
  <h1 data-target="book.output"></h1>
  <p style="font-style:italic"><%= @search_number %> results for <strong>"<%= @my_search %>..."</strong><br><br></p>
 </div>
+
+
+
+
+<form data-controller="search" role="search">
+  <div>
+      <input data-target="search.input" type="search" placeholder="Search for books..." aria-label="Search for books online">
+      <button data-action="search#list">Search</button>
+  </div>
+</form>
+<br>
+<br>
 
 <section class="search">
   <% @books.map do |book| %>
