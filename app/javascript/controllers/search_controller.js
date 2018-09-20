@@ -7,8 +7,12 @@ export default class extends Controller {
     console.log('Search Controller loaded!')
   }
 
+  get input() {
+    return this.inputTarget.value
+  }
+
   list(event) {
     event.preventDefault()
-    console.log(this.inputTarget.value)
+    console.log(this.input)
   }
 }
