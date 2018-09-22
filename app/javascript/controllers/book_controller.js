@@ -5,5 +5,6 @@ export default class extends Controller {
 
   connect() {
     this.outputTarget.textContent = 'Search for Books'
+
   }
 }
