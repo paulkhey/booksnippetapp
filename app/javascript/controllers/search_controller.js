@@ -1,8 +1,7 @@
 var books = require('google-books-search')
 
 var options = {
-    offset: 0,
-    limit: 10
+    limit: 20
 }
 
 import { Controller } from "stimulus"
@@ -32,7 +31,7 @@ export default class extends Controller {
 
             return !(result.title == undefined || result.authors == undefined || result.thumbnail == undefined)
 
-          }).forEach(function(result, index) {
+          }).every(function(result, index) {
 
               bookResults.push({ title: result.title, author: result.authors[0], thumbnail: result.thumbnail})
 
@@ -45,8 +44,16 @@ export default class extends Controller {
                     </div>
                 </li>
               `
+
+            if (index == 9) {
+              return false
+            } else {
+              return true
+            }
           })
 
+
+          console.log(bookResults.length)
           myList +=
 
           document.getElementById('search-results').innerHTML = myList
