@@ -20,15 +20,20 @@ body {
   padding: 1em;
 }
 
-.search {
+.search__bar {
+  text-align: center;
+}
+
+.search__results {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   max-width: 900px;
   margin: auto;
+  padding: 0;
 }
 
-.search__result {
+.search__book {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;

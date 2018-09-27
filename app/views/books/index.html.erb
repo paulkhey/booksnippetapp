@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <h1>Books</h1>
 
@@ -32,34 +32,26 @@
 <br>
 <br>
 <hr>
-<br>
-
-
-<div style="text-align: center" data-controller="book">
- <h1 data-target="book.output"></h1>
- <p style="font-style:italic">Results for <strong>"<%= @my_search %>..."</strong><br><br></p>
-</div>
+<br> -->
 
 
 
 
-<form data-controller="search" role="search">
-  <div>
-      <input data-target="search.input" type="search" placeholder="Search for books..." aria-label="Search for books online">
-      <button data-action="search#list">Search</button>
+
+<section class="search">
+  <div class="search__bar" data-controller="search">
+    <h1>Search for books</h1>
+    <form role="search">
+        <input data-target="search.input" type="search" placeholder="Search for books..." aria-label="Search for books online">
+        <button data-action="search#list">Search</button>
+    </form>
   </div>
-</form>
-<br>
-<br>
-
-<section class="search" id="search">
-    <div class="search__result">
-    <img class="search__image" src="" alt="">
-    <div class="search__info">
-      <p class="search__title"><p>
-      <p class="search__author"></p>
-    </div>
-  </div>
+  <br>
+  <br>
+  <ul class="search__results" id="search-results">
+  </ul>
 </section>
+
+
 
 

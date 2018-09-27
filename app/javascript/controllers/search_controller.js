@@ -1,4 +1,10 @@
 var books = require('google-books-search')
+
+var options = {
+    offset: 0,
+    limit: 15,
+}
+
 import { Controller } from "stimulus"
 
 export default class extends Controller {
@@ -14,21 +20,40 @@ export default class extends Controller {
 
   list(event) {
     event.preventDefault()
-    books.search(this.input, function(error, results) {
-        if ( ! error ) {
-            document.getElementById('search').innerHTML = `
-              <ul>
-                <li>${results[0].title} by ${results[0].authors[0]} ${results[0].thumbnail}</li>
-                <li>${results[1].title} by ${results[1].authors[1]} ${results[0].thumbnail}</li>
-                <li>${results[2].title} by ${results[2].authors[2]} ${results[0].thumbnail}</li>
-              </ul>
+    var bookResults = []
+
+    books.search(this.input, options, function(error, results) {
+        if (!error) {
+          results.filter(function(result) {
+            return !(result.title == undefined || result.authors == undefined || result.thumbnail == undefined)
+          }).map(function(result, index) {
+            bookResults.push({ title: result.title, author: result.authors[0], thumbnail: result.thumbnail})
+          })
+
+          var myList = ''
+
+          for ( var i = 0; i < 14; i++) {
+            if (i === 10) {
+                break;
+            }
+
+            myList += `
+            <li class="search__book">
+                <img class="search__image" src="${bookResults[i].thumbnail}" alt="${bookResults[i].title} cover">
+                <div class="search__info">
+                  <p class="search__title">${bookResults[i].title}<p>
+                  <p class="search__author">${bookResults[i].author}</p>
+                </div>
+              </li>
             `
-            console.log(results[0]);
-            console.log(results[1]);
-            console.log(results[2]);
+          }
+
+          myList+=
+          document.getElementById('search-results').innerHTML = myList
+
         } else {
             console.log(error);
-            document.getElementById('search').innerHTML = "<p>Sorry, something went wrong.</p>"
+            document.getElementById('search-results').innerHTML = "<p>Sorry, something went wrong.</p>"
         }
     });
   }
