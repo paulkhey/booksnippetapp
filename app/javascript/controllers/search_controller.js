@@ -19,6 +19,7 @@ export default class extends Controller {
 
   list(event) {
     event.preventDefault()
+    this.inputTarget.value = this.input
     this.outputTarget.textContent = `You searched for "${this.input}"`
     function truncate(title) {
       if (title.length > 62) {
