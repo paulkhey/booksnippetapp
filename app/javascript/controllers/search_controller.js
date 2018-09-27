@@ -14,7 +14,7 @@ export default class extends Controller {
   }
 
   get input() {
-    return this.inputTarget.value
+    return this.inputTarget.value.trim()
   }
 
   list(event) {
