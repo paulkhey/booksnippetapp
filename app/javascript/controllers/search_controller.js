@@ -20,6 +20,13 @@ export default class extends Controller {
   list(event) {
     event.preventDefault()
     this.outputTarget.textContent = `You searched for "${this.input}"`
+    function truncate(title) {
+      if (title.length > 62) {
+        return title.substr(0,62) + '...'
+      } else {
+        return title
+      }
+    }
     var bookResults = []
     books.search(this.input, options, function(error, results) {
       if (!error) {
@@ -27,7 +34,7 @@ export default class extends Controller {
         results.filter(function(result) {
           return !(result.title == undefined || result.authors == undefined || result.thumbnail == undefined)
         }).every(function(result, index) {
-          bookResults.push({ title: result.title, author: result.authors[0], thumbnail: result.thumbnail})
+          bookResults.push({ title: truncate(result.title), author: result.authors[0], thumbnail: result.thumbnail})
           myList += `
             <li class="search__book">
               <img class="search__image" src="${bookResults[index].thumbnail}" alt="${bookResults[index].title} cover">
