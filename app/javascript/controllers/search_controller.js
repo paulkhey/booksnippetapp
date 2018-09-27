@@ -8,7 +8,7 @@ var options = {
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "input" ]
+  static targets = [ 'input','output' ]
 
   connect() {
     console.log('Search Controller loaded!')
@@ -20,14 +20,15 @@ export default class extends Controller {
 
   list(event) {
     event.preventDefault()
+    this.outputTarget.textContent = `You searched for "${this.input}"`
     var bookResults = []
 
     books.search(this.input, options, function(error, results) {
         if (!error) {
           results.filter(function(result) {
-            return !(result.title == undefined || result.authors == undefined || result.thumbnail == undefined)
+            return !(result.title == undefined && result.authors == undefined && result.thumbnail == undefined)
           }).map(function(result, index) {
-            bookResults.push({ title: result.title, author: result.authors[0], thumbnail: result.thumbnail})
+              bookResults.push({ title: result.title, author: result.authors[0], thumbnail: result.thumbnail})
           })
 
           var myList = ''
@@ -53,7 +54,7 @@ export default class extends Controller {
 
         } else {
             console.log(error);
-            document.getElementById('search-results').innerHTML = "<p>Sorry, something went wrong.</p>"
+            document.getElementById('search-results').innerHTML = '<p style="text-align:center">Sorry, something went wrong.</p>'
         }
     });
   }
