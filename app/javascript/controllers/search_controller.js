@@ -1,7 +1,7 @@
 var books = require('google-books-search')
 
 var options = {
-    limit: 20
+    limit: 25
 }
 
 import { Controller } from "stimulus"
