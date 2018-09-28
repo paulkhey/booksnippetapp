@@ -20,12 +20,6 @@ body {
   padding: 2em 1em;
 }
 
-input, textarea {
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-}
-
 .search__bar {
   text-align: center;
 }
