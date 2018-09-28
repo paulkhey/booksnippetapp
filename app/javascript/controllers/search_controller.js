@@ -28,6 +28,13 @@ export default class extends Controller {
         return title
       }
     }
+    function prependURL(url) {
+      if (url.substr(0, 8) !== 'http://' ) {
+        return 'https://' + url.substr(7, url.length)
+      } else {
+        return url
+      }
+    }
     var bookResults = []
     books.search(this.input, options, function(error, results) {
       if (!error) {
@@ -35,7 +42,7 @@ export default class extends Controller {
         results.filter(function(result) {
           return !(result.title == undefined || result.authors == undefined || result.thumbnail == undefined)
         }).every(function(result, index) {
-          bookResults.push({ title: truncate(result.title), author: result.authors[0], thumbnail: result.thumbnail})
+          bookResults.push({ title: truncate(result.title), author: result.authors[0], thumbnail: prependURL(result.thumbnail)})
           myList += `
             <li class="search__book">
               <img class="search__image" src="${bookResults[index].thumbnail}" alt="${bookResults[index].title} cover">
