@@ -10,7 +10,7 @@ export default class extends Controller {
   static targets = [ 'input','output' ]
 
   connect() {
-    console.log('Search Controller loaded!')
+    console.log('search_controller loaded!')
   }
 
   get input() {
