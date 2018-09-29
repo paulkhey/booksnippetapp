@@ -20,7 +20,6 @@ export default class extends Controller {
   list(event) {
     event.preventDefault()
     this.inputTarget.value = this.input
-    console.log(this.output)
     this.outputTarget.textContent = `${this.input}`
     function truncate(title) {
       if (title.length > 62) {
