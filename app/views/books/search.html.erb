@@ -1,0 +1,17 @@
+<% if request.original_fullpath == '/search' %>
+  <section class="search">
+    <div class="search__bar" data-controller="search">
+      <h1>Search for books</h1>
+      <form role="search">
+        <input id="cool" data-target="search.input" type="search" placeholder="Search for books..." aria-label="Search for books online">
+        <button data-action="search#list">Search</button>
+      </form>
+      <em><p data-target="search.output"></p></em>
+    </div>
+    <br>
+    <br>
+
+    <ul class="search__results" id="search-results">
+    </ul>
+  </section>
+<% end %>

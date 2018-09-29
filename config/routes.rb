@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
+  root 'books#home'
   resources :books
-  get 'book/index'
-  root 'books#index'
+  get "/search" => "books#search"
 end

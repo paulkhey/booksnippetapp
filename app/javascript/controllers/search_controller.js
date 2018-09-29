@@ -62,7 +62,6 @@ export default class extends Controller {
         document.getElementById('search-results').innerHTML = myList
       } else {
         console.log(error)
-        document.getElementById('search-results').innerHTML = '<p style="text-align:center">Sorry, something went wrong.</p>'
       }
     });
   }
