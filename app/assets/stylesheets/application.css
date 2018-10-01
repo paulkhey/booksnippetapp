@@ -22,6 +22,7 @@ body {
 
 .search__bar {
   text-align: center;
+  padding-top: 2em;
 }
 
 .search__results {
