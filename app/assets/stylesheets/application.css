@@ -20,6 +20,10 @@ body {
   padding: 2em 1em;
 }
 
+li {
+  list-style-type: none;
+}
+
 .search__bar {
   text-align: center;
 }
