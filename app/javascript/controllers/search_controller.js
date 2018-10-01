@@ -78,13 +78,11 @@ export default class extends Controller {
 
                 page = index + 1
                 $('.search__sets:nth-of-type(' + page).append(`
-                  <li>
-                    <div class="search__book">
-                      <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
-                      <div class="search__info">
-                        <p class="search__title">${sets[i].title}<p>
-                        <p class="search__author">${sets[i].author}</p>
-                      </div>
+                  <li class="search__book">
+                    <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
+                    <div class="search__info">
+                    <p class="search__title">${sets[i].title}<p>
+                    <p class="search__author">${sets[i].author}</p>
                     </div>
                   </li>`)
               }

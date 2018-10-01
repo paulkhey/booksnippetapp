@@ -20,29 +20,28 @@ body {
   padding: 2em 1em;
 }
 
-li {
-  list-style-type: none;
-}
-
 .search__bar {
   text-align: center;
 }
 
 .search__results {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
   max-width: 900px;
   margin: auto;
   padding: 0;
 }
 
+.search__sets {
+  margin-bottom: 2em;
+  border-bottom: 1px solid #999;
+  padding-bottom: 2em;
+}
+
 .search__book {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
-  margin: 0 0 2em;
+  align-items: center;
   width: 450px;
+  min-height: 9.5em;
 }
 
 .search__info {
