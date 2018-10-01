@@ -64,8 +64,8 @@ export default class extends Controller {
     $('section.search').attr('data-search-index', 0)
 
     function truncate(title) {
-      if (title.length > 62) {
-        return title.substr(0,62) + '...'
+      if (title.length > 40) {
+        return title.substr(0,40) + '...'
       } else {
         return title
       }
@@ -122,9 +122,7 @@ export default class extends Controller {
                         <p class="search__author">${sets[i].author}</p>
                       </div>
                     </div>
-                    <div class="search__book--action">
-                      <a>Add Book</a>
-                    </div>
+                    <a class="search__book--action"><span>Add Book</span></a>
                   </li>`)
               }
             })

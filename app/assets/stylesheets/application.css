@@ -41,24 +41,36 @@ body {
   align-items: center;
   min-height: 9.5em;
   flex-wrap: wrap;
-  margin: 1em 0 1.5em;
+  padding: 1.5em 0.5em;
+  border-bottom: 1px solid #e7e7e7;
 }
 
 .search__book--detail {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .search__book--action {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1em 0;
+  width: 6.5em;
+  height: 2.5em;
+  background: #084efa;
+  border-radius: 0.2em;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.search__book--action:hover {
+  background: #0545e2;
 }
 
 .search__info {
-  margin: 0 1em;
+  margin: 0 1.5em;
 }
 
 .search__title {
@@ -73,7 +85,8 @@ body {
 
 .search__image {
   width: 100%;
-  max-width: 90px;
+  max-width: 96px;
+  box-shadow: 0 0.1em 0.2em 0 rgba(0, 0, 0, .3);
 }
 
 .page {
@@ -104,7 +117,38 @@ body {
 }
 
 .pagination button {
+  cursor: pointer;
   outline: 0;
   border: 0;
   background: none;
+}
+
+
+@media (max-width: 768px) {
+  .search__book {
+    flex-direction: column;
+    padding: 2.5em 0 0.8em;i
+  }
+
+  .search__info {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .search__title {
+    max-width: 420px;
+  }
+
+  .search__image {
+    max-width: 150px;
+    margin-bottom: .5em;
+  }
+
+  .search__book--detail {
+    flex-direction: column;
+  }
+
+  .search__book--action {
+    margin: 0.5em 0 1em;
+  }
 }
