@@ -135,6 +135,7 @@ export default class extends Controller {
             $('.search__set:nth-of-type(1) .pagination').addClass('beg')
             $('.search__set:nth-of-type(1) button:nth-of-type(1)').remove()
 
+            $('.search__book:nth-of-type(' + size + ')').addClass('search__book--last')
             $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') .pagination').addClass('end')
             $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(2)').remove()
           }
