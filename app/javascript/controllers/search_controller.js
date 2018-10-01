@@ -107,7 +107,7 @@ export default class extends Controller {
             }
 
             bookSets.map(function(sets, index) {
-              $('#search-results').append(`<div data-target="search.page" class="search__set page page-${index+1}"><p style="font-weight:bold">Page ${index + 1}</p></div>`)
+              $('#search-results').append(`<div data-target="search.page" class="search__set page page-${index+1}"></div>`)
               page = index + 1
 
               for (var i = 0; i <= sets.length - 1; i ++) {
@@ -122,9 +122,10 @@ export default class extends Controller {
               }
             })
 
-            $('.search__set').prepend(`
+            $('.search__set').append(`<div class="pagination">
               <button data-action="search#previous">←</button>
-              <button data-action="search#next">→</button>`)
+              <button data-action="search#next">→</button>
+              </div>`)
 
             $('.search__set:nth-of-type(1) button:nth-of-type(1)').remove()
             $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(2)').remove()
