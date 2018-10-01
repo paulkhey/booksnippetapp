@@ -71,8 +71,8 @@ export default class extends Controller {
             $('#search-results').html('')
 
             for (var i = 0; i < Math.ceil(arr.length / size); i++) {
-              bookSets[i] = arr.slice(j, j + size);
-              j = j + size;
+              bookSets[i] = arr.slice(j, j + size)
+              j = j + size
             }
 
             bookSets.map(function(sets, index) {
