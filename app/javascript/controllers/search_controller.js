@@ -1,7 +1,7 @@
 var books = require('google-books-search')
 
 var options = {
-    limit: 40
+    limit: 30
 }
 
 import { Controller } from "stimulus"
@@ -52,7 +52,7 @@ export default class extends Controller {
             return !(result.title == undefined || result.authors == undefined || result.thumbnail == undefined)
           }).every(function(result, index) {
             bookResults.push({ title: truncate(result.title), author: result.authors[0], thumbnail: prependURL(result.thumbnail)})
-            if (index == 11) {
+            if (index == 27) {
               return false
             } else {
               return true
@@ -89,9 +89,8 @@ export default class extends Controller {
                   </li>`)
               }
             })
-
           }
-          paginateBooks(bookResults, 3)
+          paginateBooks(bookResults, 7)
         } else {
           console.log(error)
         }
