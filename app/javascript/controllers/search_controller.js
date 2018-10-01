@@ -60,8 +60,10 @@ export default class extends Controller {
           })
 
           function paginateBooks(arr, size) {
-            var bookSets = [];
-            var j = 0;
+            var bookSets = []
+            var j = 0
+            var page
+
             $('#search-results').html('')
 
             for (var i = 0; i < Math.ceil(arr.length / size); i++) {
@@ -70,10 +72,12 @@ export default class extends Controller {
             }
 
             bookSets.map(function(sets, index) {
-              $('#search-results').append(`<div class="search__sets page-${index+1}" >Page ${index + 1}</div>`)
+              $('#search-results').append(`<div class="search__sets page-${index+1}" ><p style="font-weight:bold">Page ${index + 1}</p></div>`)
 
               for (var i = 0; i <= sets.length - 1; i ++) {
-                $('.search__sets:nth-of-type(' + index).append(`
+
+                page = index + 1
+                $('.search__sets:nth-of-type(' + page).append(`
                   <li>
                     <div class="search__book">
                       <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
@@ -83,9 +87,7 @@ export default class extends Controller {
                       </div>
                     </div>
                   </li>`)
-
               }
-              console.log('')
             })
 
           }
