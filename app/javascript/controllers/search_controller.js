@@ -111,7 +111,7 @@ export default class extends Controller {
               page = index + 1
 
               for (var i = 0; i <= sets.length - 1; i ++) {
-                $('.search__set:nth-of-type(' + page).append(`
+                $('.search__set:nth-of-type(' + page + ')').append(`
                   <li class="search__book">
                     <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
                     <div class="search__info">
