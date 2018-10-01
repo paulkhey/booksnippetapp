@@ -7,7 +7,34 @@ var options = {
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ 'input','output']
+  static targets = [ 'input','output','page']
+
+  initialize() {
+    this.showCurrentPage()
+  }
+
+  next() {
+    this.index++
+  }
+
+  previous() {
+    this.index--
+  }
+
+  showCurrentPage() {
+    this.pageTargets.forEach((el, i) => {
+      el.classList.toggle("page--current", this.index == i)
+    })
+  }
+
+  get index() {
+    return parseInt(this.data.get("index"))
+  }
+
+  set index(value) {
+    this.data.set("index", value)
+    this.showCurrentPage()
+  }
 
   connect() {
     console.log('search_controller loaded!')
@@ -76,7 +103,7 @@ export default class extends Controller {
             }
 
             bookSets.map(function(sets, index) {
-              $('#search-results').append(`<div class="search__sets page-${index+1}"><p style="font-weight:bold">Page ${index + 1}</p></div>`)
+              $('#search-results').append(`<div data-target="search.page" class="search__sets page"><p style="font-weight:bold">Page ${index + 1}</p></div>`)
 
               for (var i = 0; i <= sets.length - 1; i ++) {
                 page = index + 1
@@ -92,7 +119,6 @@ export default class extends Controller {
             })
           }
           paginateBooks(bookResults, 7)
-          console.log(this.data)
         } else {
           console.log(error)
         }
