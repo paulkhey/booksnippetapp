@@ -108,9 +108,9 @@ export default class extends Controller {
 
             bookSets.map(function(sets, index) {
               $('#search-results').append(`<div data-target="search.page" class="search__set page page-${index+1}"><p style="font-weight:bold">Page ${index + 1}</p></div>`)
+              page = index + 1
 
               for (var i = 0; i <= sets.length - 1; i ++) {
-                page = index + 1
                 $('.search__set:nth-of-type(' + page).append(`
                   <li class="search__book">
                     <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
@@ -122,16 +122,12 @@ export default class extends Controller {
               }
             })
 
-
-
-
             $('.search__set').prepend(`
-            <button data-action="search#previous">←</button>
-            <button data-action="search#next">→</button>`)
-
+              <button data-action="search#previous">←</button>
+              <button data-action="search#next">→</button>`)
 
             $('.search__set:nth-of-type(1) button:nth-of-type(1)').remove()
-            $('.search__set:nth-of-type(4) button:nth-of-type(2)').remove()
+            $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(2)').remove()
           }
           paginateBooks(bookResults, 7)
 
