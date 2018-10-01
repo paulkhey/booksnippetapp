@@ -134,7 +134,10 @@ export default class extends Controller {
               <button data-action="search#next">→</button>
               </div>`)
 
+            $('.search__set:nth-of-type(1) .pagination').addClass('beg')
             $('.search__set:nth-of-type(1) button:nth-of-type(1)').remove()
+
+            $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') .pagination').addClass('end')
             $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(2)').remove()
           }
           paginateBooks(bookResults, 7)
