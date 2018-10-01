@@ -29,6 +29,7 @@ export default class extends Controller {
     event.preventDefault()
     this.inputTarget.value = this.input
     this.output.textContent = `${this.input}`
+
     function truncate(title) {
       if (title.length > 62) {
         return title.substr(0,62) + '...'
@@ -36,6 +37,7 @@ export default class extends Controller {
         return title
       }
     }
+
     function prependURL(url) {
       if (url.substr(0, 8) !== 'http://' ) {
         return 'https://' + url.substr(7, url.length)
@@ -43,6 +45,7 @@ export default class extends Controller {
         return url
       }
     }
+
     var bookResults = []
 
     if (this.input.length != 0) {
@@ -52,6 +55,7 @@ export default class extends Controller {
             return !(result.title == undefined || result.authors == undefined || result.thumbnail == undefined)
           }).every(function(result, index) {
             bookResults.push({ title: truncate(result.title), author: result.authors[0], thumbnail: prependURL(result.thumbnail)})
+
             if (index == 27) {
               return false
             } else {
@@ -75,7 +79,6 @@ export default class extends Controller {
               $('#search-results').append(`<div class="search__sets page-${index+1}" ><p style="font-weight:bold">Page ${index + 1}</p></div>`)
 
               for (var i = 0; i <= sets.length - 1; i ++) {
-
                 page = index + 1
                 $('.search__sets:nth-of-type(' + page).append(`
                   <li class="search__book">
