@@ -1,4 +1,4 @@
-<section data-controller="search" class="search" data-search-index="1">
+<section data-controller="search" class="search" data-search-index="0">
   <div class="search__bar">
     <h1>Search for books</h1>
     <form role="search">
@@ -9,9 +9,8 @@
   </div>
   <br>
   <br>
-  <button data-action="search#previous">←</button>
-  <button data-action="search#next">→</button>
+  <div id="pagination">
+  </div>
   <ul data-search-page="1" class="search__results" id="search-results">
   </ul>
-  <div id="pagination"></div>
 </section>

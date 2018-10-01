@@ -14,6 +14,9 @@ export default class extends Controller {
   }
 
   next() {
+    if (this.index == 0) {
+      $('.page-1').removeClass('page-1')
+    }
     this.index++
   }
 
@@ -56,6 +59,7 @@ export default class extends Controller {
     event.preventDefault()
     this.inputTarget.value = this.input
     this.output.textContent = `${this.input}`
+    $('section.search').attr('data-search-index', 0)
 
     function truncate(title) {
       if (title.length > 62) {
@@ -103,11 +107,11 @@ export default class extends Controller {
             }
 
             bookSets.map(function(sets, index) {
-              $('#search-results').append(`<div data-target="search.page" class="search__sets page"><p style="font-weight:bold">Page ${index + 1}</p></div>`)
+              $('#search-results').append(`<div data-target="search.page" class="search__set page page-${index+1}"><p style="font-weight:bold">Page ${index + 1}</p></div>`)
 
               for (var i = 0; i <= sets.length - 1; i ++) {
                 page = index + 1
-                $('.search__sets:nth-of-type(' + page).append(`
+                $('.search__set:nth-of-type(' + page).append(`
                   <li class="search__book">
                     <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
                     <div class="search__info">
@@ -117,8 +121,20 @@ export default class extends Controller {
                   </li>`)
               }
             })
+
+
+
+
+            $('.search__set').prepend(`
+            <button data-action="search#previous">←</button>
+            <button data-action="search#next">→</button>`)
+
+
+            $('.search__set:nth-of-type(1) button:nth-of-type(1)').remove()
+            $('.search__set:nth-of-type(4) button:nth-of-type(2)').remove()
           }
           paginateBooks(bookResults, 7)
+
         } else {
           console.log(error)
         }
