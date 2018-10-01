@@ -1,0 +1,12 @@
+<section data-controller="search" class="search" data-search-index="0">
+  <div class="search__bar">
+    <h1>Search for books</h1>
+    <form role="search">
+      <input id="cool" data-target="search.input" type="search" placeholder="Search for books..." aria-label="Search for books online">
+      <button data-action="search#list">Search</button>
+    </form>
+    <em><p data-target="search.output"></p></em>
+  </div>
+  <ul data-search-page="1" class="search__results" id="search-results">
+  </ul>
+</section>

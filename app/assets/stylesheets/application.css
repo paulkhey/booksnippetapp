@@ -15,6 +15,7 @@
  *= require_tree .
  */
 
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 2em 1em;
@@ -25,20 +26,20 @@ body {
 }
 
 .search__results {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
   max-width: 900px;
   margin: auto;
   padding: 0;
 }
 
+.search__set {
+}
+
 .search__book {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
-  margin: 0 0 2em;
+  align-items: center;
   width: 450px;
+  min-height: 9.5em;
 }
 
 .search__info {
@@ -58,4 +59,20 @@ body {
 .search__image {
   width: 100%;
   max-width: 90px;
+}
+
+.page {
+  display: none;
+}
+
+.page-1 {
+  display: block;
+}
+
+.page.page--current {
+  display: block;
+}
+
+.pagination {
+  margin-top: 3em;
 }
