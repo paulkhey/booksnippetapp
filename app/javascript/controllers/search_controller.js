@@ -18,10 +18,12 @@ export default class extends Controller {
       $('.page-1').removeClass('page-1')
     }
     this.index++
+    $("html, body").animate({ scrollTop: $('.search').offset().top }, 300)
   }
 
   previous() {
     this.index--
+    $("html, body").animate({ scrollTop: $('.search').offset().top }, 300)
   }
 
   showCurrentPage() {
@@ -113,10 +115,15 @@ export default class extends Controller {
               for (var i = 0; i <= sets.length - 1; i ++) {
                 $('.search__set:nth-of-type(' + page + ')').append(`
                   <li class="search__book">
-                    <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
-                    <div class="search__info">
-                    <p class="search__title">${sets[i].title}<p>
-                    <p class="search__author">${sets[i].author}</p>
+                    <div class="search__book--detail">
+                      <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
+                      <div class="search__info">
+                        <p class="search__title">${sets[i].title}<p>
+                        <p class="search__author">${sets[i].author}</p>
+                      </div>
+                    </div>
+                    <div class="search__book--action">
+                      <a>Add Book</a>
                     </div>
                   </li>`)
               }
