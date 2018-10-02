@@ -113,6 +113,8 @@ GEM
     pg (1.1.3)
     public_suffix (3.0.3)
     puma (3.12.0)
+    purecss-rails (0.6.1)
+      railties (>= 3.2.6, < 6)
     rack (2.0.5)
     rack-proxy (0.6.5)
       rack
@@ -215,6 +217,7 @@ DEPENDENCIES
   normalize-rails
   pg
   puma (~> 3.11)
+  purecss-rails
   rails (~> 5.2.1)
   sass-rails (~> 5.0)
   selenium-webdriver
