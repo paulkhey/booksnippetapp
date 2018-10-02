@@ -155,16 +155,16 @@
 
 .pagination {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 1em;
 }
 
 .pagination.beg {
-  justify-content: flex-end;
+  margin-left: 1em;
 }
 
 .pagination.end {
-  justify-content: flex-start;
+  margin-right: 1em;
 }
 
 .pagination button {
@@ -175,6 +175,7 @@
   background: #084efa;
   color: #fff;
   padding: 0.6em 0.8em;
+  margin: 0 .5em;
 }
 
 .pagination button:hover {

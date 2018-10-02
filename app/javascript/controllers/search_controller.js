@@ -134,16 +134,22 @@ export default class extends Controller {
 
             $('.search__set').append(`<div class="pagination">
               <button data-action="search#previous">← Prev</button>
+              <div class="page-number"></div>
               <button data-action="search#next">Next →</button>
               </div>`)
 
-            $('.search__set:nth-of-type(1) .pagination').addClass('beg')
+            for (var n = 1; n <= Math.ceil(arr.length / size); n++) {
+              console.log(n)
+              $('.search__set:nth-of-type(' + n + ') .pagination .page-number').append(n)
+            }
+
             $('.search__set:nth-of-type(1) button:nth-of-type(1)').remove()
+            $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(2)').remove()
 
             $('.search__set .search__book:first-child').addClass('search__book--first')
 
+            $('.search__set:nth-of-type(1) .pagination').addClass('beg')
             $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') .pagination').addClass('end')
-            $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(2)').remove()
           }
           paginateBooks(bookResults, 7)
 
