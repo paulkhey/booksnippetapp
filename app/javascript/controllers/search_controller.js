@@ -4,6 +4,12 @@ var options = {
     limit: 30
 }
 
+
+function scrollTop() {
+  $("html, body").animate({ scrollTop: $('.search').offset().top }, 300)
+}
+
+
 import { Controller } from "stimulus"
 
 export default class extends Controller {
@@ -18,10 +24,16 @@ export default class extends Controller {
       $('.page-1').removeClass('page-1')
     }
     this.index++
+    scrollTop()
+  }
+
+  page() {
+    scrollTop()
   }
 
   previous() {
     this.index--
+    scrollTop()
   }
 
   showCurrentPage() {
@@ -58,12 +70,12 @@ export default class extends Controller {
   list(event) {
     event.preventDefault()
     this.inputTarget.value = this.input
-    this.output.textContent = `${this.input}`
+    this.output.textContent = `"${this.input}"`
     $('section.search').attr('data-search-index', 0)
 
     function truncate(title) {
-      if (title.length > 62) {
-        return title.substr(0,62) + '...'
+      if (title.length > 40) {
+        return title.substr(0,40) + '...'
       } else {
         return title
       }
@@ -113,22 +125,35 @@ export default class extends Controller {
               for (var i = 0; i <= sets.length - 1; i ++) {
                 $('.search__set:nth-of-type(' + page + ')').append(`
                   <li class="search__book">
-                    <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
-                    <div class="search__info">
-                    <p class="search__title">${sets[i].title}<p>
-                    <p class="search__author">${sets[i].author}</p>
+                    <div class="search__book--detail">
+                      <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
+                      <div class="search__info">
+                        <p class="search__title">${sets[i].title}<p>
+                        <p class="search__author">${sets[i].author}</p>
+                      </div>
                     </div>
+                    <a class="search__book--action">Add Book</a>
                   </li>`)
               }
             })
 
+            $('.search__results').removeClass('hide')
+            $('.search').removeClass('full-height')
+            $('.results__copy').removeClass('hide')
+
             $('.search__set').append(`<div class="pagination">
-              <button data-action="search#previous">←</button>
-              <button data-action="search#next">→</button>
+              <button data-action="search#previous">← Prev</button>
+              <button data-action="search#page" class="page-number"></button>
+              <button data-action="search#next">Next →</button>
               </div>`)
 
-            $('.search__set:nth-of-type(1) button:nth-of-type(1)').remove()
-            $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(2)').remove()
+            for (var n = 1; n <= Math.ceil(arr.length / size); n++) {
+              $('.search__set:nth-of-type(' + n + ') .pagination .page-number').append(n)
+            }
+
+            $('.search__set:nth-of-type(1) button:nth-of-type(1)').addClass('hide')
+            $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(3)').addClass('hide')
+            $('.search__set .search__book:first-child').addClass('search__book--first')
           }
           paginateBooks(bookResults, 7)
 
@@ -138,6 +163,9 @@ export default class extends Controller {
       })
     } else {
       $('#search-results').html('')
+      $('.search__results').addClass('hide')
+      $('.search').addClass('full-height')
+      $('.results__copy').addClass('hide')
     }
   }
 }

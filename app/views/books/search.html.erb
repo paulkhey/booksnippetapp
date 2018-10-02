@@ -1,12 +1,12 @@
-<section data-controller="search" class="search" data-search-index="0">
+<section data-controller="search" class="search full-height" data-search-index="0">
   <div class="search__bar">
-    <h1>Search for books</h1>
+    <h1>Search for Books</h1>
     <form role="search">
-      <input id="cool" data-target="search.input" type="search" placeholder="Search for books..." aria-label="Search for books online">
-      <button data-action="search#list">Search</button>
+        <input type="book" placeholder="Search for books..." data-target="search.input" type="search" placeholder="Search for books..." aria-label="Search for books online">
+        <button data-action="search#list">Search</button>
     </form>
-    <em><p data-target="search.output"></p></em>
   </div>
-  <ul data-search-page="1" class="search__results" id="search-results">
+  <p class="results__copy hide">Results for <span style="font-weight: bold; color: #ec4505" data-target="search.output"></span></p>
+  <ul data-search-page="1" class="search__results hide" id="search-results">
   </ul>
 </section>
