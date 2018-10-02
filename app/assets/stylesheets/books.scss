@@ -159,14 +159,6 @@
   margin-top: 1em;
 }
 
-.pagination.beg {
-  margin-left: 1em;
-}
-
-.pagination.end {
-  margin-right: 1em;
-}
-
 .pagination button {
   font-weight: bold;
   cursor: pointer;
@@ -180,6 +172,10 @@
 
 .pagination button:hover {
   background: #0545e2;
+}
+
+.pagination button.hide {
+  visibility: hidden;
 }
 
 

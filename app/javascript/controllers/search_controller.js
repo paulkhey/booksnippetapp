@@ -4,6 +4,12 @@ var options = {
     limit: 30
 }
 
+
+function scrollTop() {
+  $("html, body").animate({ scrollTop: $('.search').offset().top }, 300)
+}
+
+
 import { Controller } from "stimulus"
 
 export default class extends Controller {
@@ -18,12 +24,16 @@ export default class extends Controller {
       $('.page-1').removeClass('page-1')
     }
     this.index++
-    $("html, body").animate({ scrollTop: $('.search').offset().top }, 300)
+    scrollTop()
+  }
+
+  page() {
+    scrollTop()
   }
 
   previous() {
     this.index--
-    $("html, body").animate({ scrollTop: $('.search').offset().top }, 300)
+    scrollTop()
   }
 
   showCurrentPage() {
@@ -127,29 +137,23 @@ export default class extends Controller {
               }
             })
 
-
             $('.search__results').removeClass('hide')
             $('.search').removeClass('full-height')
             $('.results__copy').removeClass('hide')
 
             $('.search__set').append(`<div class="pagination">
               <button data-action="search#previous">← Prev</button>
-              <div class="page-number"></div>
+              <button data-action="search#page" class="page-number"></button>
               <button data-action="search#next">Next →</button>
               </div>`)
 
             for (var n = 1; n <= Math.ceil(arr.length / size); n++) {
-              console.log(n)
               $('.search__set:nth-of-type(' + n + ') .pagination .page-number').append(n)
             }
 
-            $('.search__set:nth-of-type(1) button:nth-of-type(1)').remove()
-            $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(2)').remove()
-
+            $('.search__set:nth-of-type(1) button:nth-of-type(1)').addClass('hide')
+            $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(3)').addClass('hide')
             $('.search__set .search__book:first-child').addClass('search__book--first')
-
-            $('.search__set:nth-of-type(1) .pagination').addClass('beg')
-            $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') .pagination').addClass('end')
           }
           paginateBooks(bookResults, 7)
 
