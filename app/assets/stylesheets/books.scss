@@ -71,6 +71,16 @@
   display: none;
 }
 
+
+.results__copy {
+  text-align: center;
+  margin: 1.5em 0 0.5em;
+}
+
+.results__copy.hide {
+  display: none;
+}
+
 .search__set {
   max-width: 700px;
   margin: auto;
@@ -88,7 +98,6 @@
 
 .search__book--first {
   border-top: 0;
-  margin-top: 1.5em;
 }
 
 .search__book--detail {
@@ -163,12 +172,13 @@
   cursor: pointer;
   border: 0;
   padding: 0;
-  padding-bottom: .13em;
+  background: #084efa;
+  color: #fff;
+  padding: 0.6em 0.8em;
 }
 
 .pagination button:hover {
-  padding-bottom: 0;
-  border-bottom: .13em solid #000;
+  background: #0545e2;
 }
 
 

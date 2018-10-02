@@ -60,7 +60,7 @@ export default class extends Controller {
   list(event) {
     event.preventDefault()
     this.inputTarget.value = this.input
-    this.output.textContent = `${this.input}`
+    this.output.textContent = `"${this.input}"`
     $('section.search').attr('data-search-index', 0)
 
     function truncate(title) {
@@ -130,6 +130,7 @@ export default class extends Controller {
 
             $('.search__results').removeClass('hide')
             $('.search').removeClass('full-height')
+            $('.results__copy').removeClass('hide')
 
             $('.search__set').append(`<div class="pagination">
               <button data-action="search#previous">← Prev</button>
@@ -154,6 +155,7 @@ export default class extends Controller {
       $('#search-results').html('')
       $('.search__results').addClass('hide')
       $('.search').addClass('full-height')
+      $('.results__copy').addClass('hide')
     }
   }
 }
