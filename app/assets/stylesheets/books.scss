@@ -11,6 +11,10 @@ $hover-color: #333;
   border-radius: 0;
 }
 
+.primary-btn:hover {
+  background: $hover-color;
+}
+
 .search {
   padding: 0 .5em;
 }
