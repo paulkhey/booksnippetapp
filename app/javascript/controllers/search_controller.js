@@ -122,20 +122,20 @@ export default class extends Controller {
                         <p class="search__author">${sets[i].author}</p>
                       </div>
                     </div>
-                    <a class="search__book--action"><span>Add Book</span></a>
+                    <a class="search__book--action">Add Book</a>
                   </li>`)
               }
             })
 
             $('.search__set').append(`<div class="pagination">
-              <button data-action="search#previous">←</button>
-              <button data-action="search#next">→</button>
+              <button data-action="search#previous">← Prev</button>
+              <button data-action="search#next">Next →</button>
               </div>`)
 
             $('.search__set:nth-of-type(1) .pagination').addClass('beg')
             $('.search__set:nth-of-type(1) button:nth-of-type(1)').remove()
 
-            $('.search__set .search__book:first-child').addClass('search__book--last')
+            $('.search__set .search__book:first-child').addClass('search__book--first')
 
             $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') .pagination').addClass('end')
             $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(2)').remove()
