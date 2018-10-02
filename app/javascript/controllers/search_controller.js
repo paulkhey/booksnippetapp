@@ -127,6 +127,10 @@ export default class extends Controller {
               }
             })
 
+
+            $('.search__results').removeClass('hide')
+            $('.search').removeClass('full-height')
+
             $('.search__set').append(`<div class="pagination">
               <button data-action="search#previous">← Prev</button>
               <button data-action="search#next">Next →</button>
@@ -148,6 +152,8 @@ export default class extends Controller {
       })
     } else {
       $('#search-results').html('')
+      $('.search__results').addClass('hide')
+      $('.search').addClass('full-height')
     }
   }
 }
