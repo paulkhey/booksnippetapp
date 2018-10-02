@@ -24,6 +24,8 @@
   align-items: center;
   position: relative;
   margin: auto;
+  max-width: 500px;
+  width: 100%;
 }
 
 .search__bar h1 {
@@ -36,10 +38,6 @@
   max-width: 684px;
   width: 100%;
   border: 1px solid #444;
-}
-
-.search__bar input:after {
-  content: 'Search';
 }
 
 .search__bar button {
@@ -180,17 +178,10 @@
 
 
 @media (max-width: 768px) {
+
   .search__book {
     flex-direction: column;
     padding: 2.5em 0 0.8em;
-  }
-
-  .search__bar form {
-    flex-direction: column;
-  }
-
-  .search__bar input {
-    width: 90%;
   }
 
   .search__info {
@@ -213,5 +204,22 @@
 
   .search__book--action {
     margin: 0.5em 0 1em;
+  }
+}
+
+
+
+@media (max-width: 576px) {
+  .search__bar form {
+    flex-direction: column;
+  }
+
+  .search__bar input {
+    width: 90%;
+  }
+
+  .search__bar button {
+    position: relative;
+    margin-top: 1.5em;
   }
 }
