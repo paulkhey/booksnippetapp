@@ -1,3 +1,16 @@
+$button-color: #000;
+$hover-color: #333;
+
+.primary-btn {
+  border: 0;
+  cursor: pointer;
+  padding: 0.6em 0.8em;
+  background: $button-color;
+  color: #fff;
+  padding: 0.6em 0.8em;
+  border-radius: 0;
+}
+
 .search {
   padding: 0 .5em;
 }
@@ -12,7 +25,7 @@
 
 .search__bar {
   text-align: center;
-  padding-top: 3m;
+  padding-top: 3em;
   max-width: 500px;
   width: 100%;
   margin: auto;
@@ -30,33 +43,26 @@
 
 .search__bar h1 {
   margin-top: 0;
-  font-weight: 400;
 }
 
 .search__bar input {
   padding: .6em;
   max-width: 684px;
   width: 100%;
-  border: 1px solid #444;
+  border: 1px solid #b1b1b1;
 }
 
 .search__bar button {
   cursor: pointer;
   padding: .6em;
   margin-left: 0.5em;
-  border: 0;
-  background: #084efa;
   color: #fff;
-  border: 1px solid #084efa;
+  border: 1px solid $button-color;
   font-weight: bold;
   width: 6.5em;
   position: absolute;
   right: 0;
   top: 0;
-}
-
-.search__bar button:hover {
-  background: #0545e2;
 }
 
 .search__results {
@@ -109,14 +115,10 @@
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  cursor: pointer;
-  border: 0;
-  padding-bottom: .13em;
 }
 
 .search__book--action:hover {
-  padding-bottom: 0;
-  border-bottom: .13em solid #000;
+  background: $hover-color;
 }
 
 .search__info {
@@ -160,17 +162,11 @@
 
 .pagination button {
   font-weight: bold;
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  background: #084efa;
-  color: #fff;
-  padding: 0.6em 0.8em;
   margin: 0 .5em;
 }
 
 .pagination button:hover {
-  background: #0545e2;
+  background: $hover-color;
 }
 
 .pagination button.hide {

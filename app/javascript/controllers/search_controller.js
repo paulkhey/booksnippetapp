@@ -132,7 +132,7 @@ export default class extends Controller {
                         <p class="search__author">${sets[i].author}</p>
                       </div>
                     </div>
-                    <a class="search__book--action">Add Book</a>
+                    <button class="search__book--action primary-btn">Add Book</button>
                   </li>`)
               }
             })
@@ -142,9 +142,9 @@ export default class extends Controller {
             $('.results__copy').removeClass('hide')
 
             $('.search__set').append(`<div class="pagination">
-              <button data-action="search#previous">← Prev</button>
-              <button data-action="search#page" class="page-number"></button>
-              <button data-action="search#next">Next →</button>
+              <button class="primary-btn" data-action="search#previous">← Prev</button>
+              <button class="primary-btn page-number" data-action="search#page"></button>
+              <button class="primary-btn" data-action="search#next">Next →</button>
               </div>`)
 
             for (var n = 1; n <= Math.ceil(arr.length / size); n++) {
