@@ -44,7 +44,9 @@ $hover-color: #003bcc;
   position: relative;
   margin: auto;
   max-width: 500px;
-  width: 100%;
+  width: 90%;
+  height: 2.7em;
+  overflow: hidden;
 }
 
 .search__bar h1 {
@@ -56,6 +58,7 @@ $hover-color: #003bcc;
   max-width: 684px;
   width: 100%;
   border: 1px solid #b1b1b1;
+  border-right: 0;
 }
 
 .search__bar button {
@@ -64,13 +67,8 @@ $hover-color: #003bcc;
   background: $main-color;
   border: 1px solid $main-color;
   font-weight: bold;
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 6px 9px 0;
   padding: 0.4em 0.5em 0 .5em;
-  height: 43px;
-  height: 2.7em;
+  height: 100%;
 }
 
 
@@ -219,13 +217,5 @@ $hover-color: #003bcc;
 
   .search__book--action {
     margin: 0.5em 0 1em;
-  }
-}
-
-
-
-@media (max-width: 576px) {
-  .search__bar form {
-    width: 90%;
   }
 }
