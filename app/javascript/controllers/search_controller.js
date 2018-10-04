@@ -1,9 +1,9 @@
 var books = require('google-books-search')
 
 var options = {
-    limit: 30
+    limit: 30,
+    order: 'relevance'
 }
-
 
 function scrollTop() {
   $("html, body").animate({ scrollTop: $('.search').offset().top }, 300)
@@ -13,10 +13,25 @@ function scrollTop() {
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ 'input','output','page']
+  static targets = [ 'input','output','page','order']
 
   initialize() {
     this.showCurrentPage()
+  }
+
+  sort() {
+    if (this.order == 'Date') {
+      options.order = 'newest'
+      console.log(options.order)
+    } else if (this.order == 'Relevance') {
+      options.order = 'relevance'
+      console.log(options.order)
+    }
+    this.list(event)
+  }
+
+  paginate() {
+    console.log('paginate clicked!')
   }
 
   next() {
@@ -51,10 +66,6 @@ export default class extends Controller {
     this.showCurrentPage()
   }
 
-  connect() {
-    console.log('search_controller loaded!')
-  }
-
   get input() {
     return this.inputTarget.value.trim()
   }
@@ -63,8 +74,8 @@ export default class extends Controller {
     return this.outputTarget
   }
 
-  paginate() {
-    console.log('paginate clicked!')
+  get order() {
+    return this.orderTarget.value
   }
 
   list(event) {
@@ -131,6 +142,7 @@ export default class extends Controller {
               }
             })
 
+            $('.search__sort').removeClass('hide')
             $('.search__results').removeClass('hide')
             $('.search').removeClass('full-height')
             $('.results__copy').removeClass('hide')
@@ -157,6 +169,7 @@ export default class extends Controller {
       })
     } else {
       $('#search-results').html('')
+      $('.search__sort').addClass('hide')
       $('.search__results').addClass('hide')
       $('.search').addClass('full-height')
       $('.results__copy').addClass('hide')

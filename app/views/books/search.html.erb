@@ -2,11 +2,20 @@
   <div class="search__bar">
     <h1>Search for Books</h1>
     <form role="search">
-        <input type="book" placeholder="Search for Books..." data-target="search.input" type="search" placeholder="Search for books..." aria-label="Search for Books">
+      <div>
+        <input type="book" placeholder="Search for Books..." data-target="search.input" type="search" maxlength="60" placeholder="Search for books..." aria-label="Search for Books">
         <button class="primary-btn" data-action="search#list" aria-label="Search button"><img src="<%= asset_path('search.svg') %>"></button>
+      </div>
+      <div>
+        <p class="results__copy hide">Results for <span style="font-weight: bold; color: #ec4505" data-target="search.output"></span></p>
+        <select class="search__sort hide" data-action="change->search#sort" data-target="search.order" aria-label="Sort by">
+          <option value="Relevance">Relevance</option>
+          <option value="Date">Published Date</option>
+        </select>
+      </div>
     </form>
+
   </div>
-  <p class="results__copy hide">Results for <span style="font-weight: bold; color: #ec4505" data-target="search.output"></span></p>
   <ul data-search-page="1" class="search__results hide" id="search-results">
   </ul>
 </section>
