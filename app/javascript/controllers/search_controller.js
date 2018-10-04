@@ -27,7 +27,7 @@ export default class extends Controller {
       options.order = 'relevance'
       console.log(options.order)
     }
-    this.list(1)
+    this.list(event)
   }
 
   next() {
