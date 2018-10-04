@@ -136,7 +136,7 @@ export default class extends Controller {
                       </div>
                     </div>
                     <a style="text-decoration:none; cursor: pointer; margin: 0.5em 0 1em" href="${sets[i].link}" target="_blank">
-                      <button style="margin: 0" class="search__book--action primary-btn" aria-label="Add book">Details</button>
+                      <span style="margin: 0" class="search__book--action primary-btn" aria-label="Add book">Details</span>
                     </a>
                   </li>`)
               }
