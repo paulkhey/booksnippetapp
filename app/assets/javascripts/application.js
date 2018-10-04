@@ -19,4 +19,8 @@
 
 $(document).ready(function() {
   console.log('application.js loaded')
+  $('.search__bar button').on('click', function(event) {
+    event.preventDefault()
+    console.log('hey')
+  })
 })

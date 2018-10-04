@@ -9,7 +9,6 @@ function scrollTop() {
   $("html, body").animate({ scrollTop: $('.search').offset().top }, 300)
 }
 
-
 import { Controller } from "stimulus"
 
 export default class extends Controller {
@@ -74,8 +73,7 @@ export default class extends Controller {
     return this.orderTarget.value
   }
 
-  list(event) {
-    event.preventDefault()
+  list() {
     this.inputTarget.value = this.input
     this.output.textContent = `"${this.input}"`
     $('section.search').attr('data-search-index', 0)
