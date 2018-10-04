@@ -6,15 +6,23 @@ $hover-color: #003bcc;
 .primary-btn {
   border: 0;
   cursor: pointer;
-  padding: 0.6em 0.8em;
   background: $button-color;
   color: #fff;
   padding: 0.6em 0.8em;
   border-radius: 0;
+  font-weight: bold;
 }
 
 .primary-btn:hover {
   background: $hover-color;
+}
+
+.secondary-btn {
+  background: $main-color;
+}
+
+.secondary-btn:hover {
+  background: $main-hover;
 }
 
 .search {
@@ -145,6 +153,14 @@ $hover-color: #003bcc;
   font-weight: bold;
 }
 
+.search__book--action.hide {
+  display: none;
+}
+
+.search__book--added.hide {
+  display: none;
+}
+
 .search__book--action:hover {
   background: $hover-color;
 }
@@ -156,8 +172,9 @@ $hover-color: #003bcc;
 .search__title {
   font-weight: bold;
   font-size: 1.3em;
+  margin-top: 0;
   margin-bottom: 0.2em;
-  max-width: 435px;
+  max-width: 415px;
   display: inline-block;
   color: #000;
   text-decoration: none;
@@ -245,7 +262,8 @@ $hover-color: #003bcc;
     flex-direction: column;
   }
 
-  .search__book--action {
+  .search__book--action,
+  .search__book--added {
     margin: 0.5em 0 1em;
   }
 }

@@ -9,6 +9,11 @@ function scrollTop() {
   $("html, body").animate({ scrollTop: $('.search').offset().top }, 300)
 }
 
+
+  function cool() {
+    console.log(1)
+  }
+
 import { Controller } from "stimulus"
 
 export default class extends Controller {
@@ -16,6 +21,10 @@ export default class extends Controller {
 
   initialize() {
     this.showCurrentPage()
+  }
+
+  page() {
+    scrollTop()
   }
 
   sort() {
@@ -35,9 +44,6 @@ export default class extends Controller {
     scrollTop()
   }
 
-  page() {
-    scrollTop()
-  }
 
   previous() {
     this.index--
@@ -129,20 +135,19 @@ export default class extends Controller {
                         <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
                       </a>
                       <div class="search__info">
-                        <a href="${sets[i].link}" target="_blank" class="search__title">${sets[i].title}</a>
+                        <a href="${sets[i].link}" target="_blank"><p class="search__title">${sets[i].title}</p></a>
                         <p class="search__author">by <span style="color: #003bcc; font-weight: bold">${sets[i].author}</span></p>
                         <p class="search__date"><strong>Published:</strong> ${moment(sets[i].publishedDate, 'YYYY-MM-DD').format('MMMM D, YYYY')}</p>
                         <p class="search__pages"><strong>Length:</strong> ${sets[i].pageCount} Pages</p>
                       </div>
                     </div>
-                    <a style="text-decoration:none; cursor: pointer; margin: 0.5em 0 1em" href="${sets[i].link}" target="_blank">
-                      <span style="margin: 0" class="search__book--action primary-btn" aria-label="Add book">Details</span>
-                    </a>
+                    <button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>
+                    <div class="search__book--added primary-btn secondary-btn hide" aria-label="Book added">Book Added!</div>
                   </li>`)
               }
             })
 
-            {/*<button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>*/}
+
 
             $('.search__sort').removeClass('hide')
             $('.search__results').removeClass('hide')
@@ -159,7 +164,7 @@ export default class extends Controller {
               $('.search__set:nth-of-type(' + n + ') .pagination .page-number').append(n)
             }
 
-            $('.search__set:nth-of-type(1) button:nth-of-type(1)').addClass('hide')
+            $('.search__set:nth-of-type(1) .pagination button:nth-of-type(1)').addClass('hide')
             $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(3)').addClass('hide')
             $('.search__set .search__book:first-child').addClass('search__book--first')
           }
