@@ -133,10 +133,14 @@ export default class extends Controller {
                         <p class="search__pages"><strong>Length:</strong> ${sets[i].pageCount} Pages</p>
                       </div>
                     </div>
-                    <button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>
+                    <a style="text-decoration:none; cursor: pointer; margin: 0.5em 0 1em" href="${sets[i].link}" target="_blank">
+                      <button style="margin: 0" class="search__book--action primary-btn" aria-label="Add book">Details</button>
+                    </a>
                   </li>`)
               }
             })
+
+            {/*<button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>*/}
 
             $('.search__sort').removeClass('hide')
             $('.search__results').removeClass('hide')
