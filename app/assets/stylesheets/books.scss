@@ -158,6 +158,13 @@ $hover-color: #003bcc;
   font-size: 1.3em;
   margin-bottom: 0.2em;
   max-width: 435px;
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+}
+
+.search__title:hover {
+  text-decoration: underline;
 }
 
 .search__author {
