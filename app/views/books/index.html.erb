@@ -4,6 +4,7 @@
   <% @mybooks.each do |book| %>
     <p class="books__title"><%= book.title %></p>
     <p class="books__author"><%= book.author %></p>
+    <p class="books__author"><%= book.link %></p>
     <img class="books__image" src="<%= book.cover %>" alt="<%= book.title %>">
       <%= link_to 'Show', book %>
       <%= link_to 'Edit', edit_book_path(book) %>
@@ -11,7 +12,7 @@
   <% end %>
 </section>
 
-<!-- <%= link_to 'New Book', new_book_path %> -->
+<%= link_to 'New Book', new_book_path %>
 
 
 

@@ -25,9 +25,11 @@ $(document).ready(function() {
       var title = bookinfo.children('a').children('.search__title').html()
       var author = bookinfo.children('.search__author').children('span').html()
       var image = book.children('a').children('img.search__image').attr('src')
+      var link = bookinfo.children('a').attr('href')
       console.log(title)
       console.log(author)
       console.log(image)
+      console.log(link)
       $(this).addClass('hide')
       $(this).siblings('.search__book--added').removeClass('hide')
 
@@ -35,7 +37,7 @@ $(document).ready(function() {
       $.ajax({
         type: 'POST',
         url: '/books',
-        data: { book: { title: title, author: author, cover: image}},
+        data: { book: { title: title, author: author, cover: image, link: link}},
         success: function(data) {
           console.log('Success')
           console.log(data)
@@ -48,4 +50,8 @@ $(document).ready(function() {
   }
 
   addBook()
+
+  setTimeout(function() {
+    addBook()
+  }, 3000)
 })
