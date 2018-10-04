@@ -1,7 +1,7 @@
 var books = require('google-books-search')
 
 var options = {
-    limit: 30,
+    limit: 40,
     order: 'relevance'
 }
 
@@ -27,11 +27,7 @@ export default class extends Controller {
       options.order = 'relevance'
       console.log(options.order)
     }
-    this.list(event)
-  }
-
-  paginate() {
-    console.log('paginate clicked!')
+    this.list(1)
   }
 
   next() {
@@ -102,7 +98,7 @@ export default class extends Controller {
           }).every(function(result, index) {
             bookResults.push({ title: result.title, author: result.authors[0], thumbnail: prependURL(result.thumbnail), pageCount: result.pageCount, publishedDate: result.publishedDate, link: result.link })
 
-            if (index == 27) {
+            if (index == 34) {
               return false
             } else {
               return true
