@@ -95,9 +95,9 @@ export default class extends Controller {
       books.search(this.input, options, function(error, results) {
         if (!error) {
           results.filter(function(result) {
-            return !(result.title == undefined || result.authors == undefined || result.thumbnail == undefined)
+            return !(result.title == undefined || result.authors == undefined || result.thumbnail == undefined || result.pageCount == undefined || result.publishedDate == undefined)
           }).every(function(result, index) {
-            bookResults.push({ title: truncate(result.title), author: result.authors[0], thumbnail: prependURL(result.thumbnail)})
+            bookResults.push({ title: truncate(result.title), author: result.authors[0], thumbnail: prependURL(result.thumbnail), pageCount: result.pageCount, publishedDate: result.publishedDate })
 
             if (index == 27) {
               return false
@@ -128,8 +128,10 @@ export default class extends Controller {
                     <div class="search__book--detail">
                       <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
                       <div class="search__info">
-                        <p class="search__title">${sets[i].title}<p>
-                        <p class="search__author">${sets[i].author}</p>
+                        <p class="search__title">${sets[i].title}</p>
+                        <p class="search__author">by <span style="color: #003bcc; font-weight: bold">${sets[i].author}</span></p>
+                        <p class="search__date"><strong>Published:</strong> ${moment(sets[i].publishedDate, 'YYYY-MM-DD').format('MMMM D, YYYY')}</p>
+                        <p class="search__pages"><strong>Length:</strong> ${sets[i].pageCount} Pages</p>
                       </div>
                     </div>
                     <button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>

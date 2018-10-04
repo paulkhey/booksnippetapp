@@ -141,12 +141,21 @@ $hover-color: #003bcc;
 
 .search__title {
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.3em;
+  margin-bottom: 0.2em;
 }
 
 .search__author {
   font-size: 1em;
-  opacity: .7;
+  margin-top: 0;
+}
+
+.search__pages {
+  font-size: .9em;
+}
+
+.search__date {
+  font-size: .9em;
 }
 
 .search__image {
