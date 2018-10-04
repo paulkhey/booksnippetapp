@@ -22,7 +22,7 @@ $hover-color: #003bcc;
 }
 
 .search.full-height{
-  height: 85vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,6 +143,7 @@ $hover-color: #003bcc;
   font-weight: bold;
   font-size: 1.3em;
   margin-bottom: 0.2em;
+  max-width: 435px;
 }
 
 .search__author {

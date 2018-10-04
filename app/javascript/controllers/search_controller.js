@@ -73,14 +73,6 @@ export default class extends Controller {
     this.output.textContent = `"${this.input}"`
     $('section.search').attr('data-search-index', 0)
 
-    function truncate(title) {
-      if (title.length > 40) {
-        return title.substr(0,40) + '...'
-      } else {
-        return title
-      }
-    }
-
     function prependURL(url) {
       if (url.substr(0, 8) !== 'http://' ) {
         return 'https://' + url.substr(7, url.length)
@@ -97,7 +89,7 @@ export default class extends Controller {
           results.filter(function(result) {
             return !(result.title == undefined || result.authors == undefined || result.thumbnail == undefined || result.pageCount == undefined || result.publishedDate == undefined)
           }).every(function(result, index) {
-            bookResults.push({ title: truncate(result.title), author: result.authors[0], thumbnail: prependURL(result.thumbnail), pageCount: result.pageCount, publishedDate: result.publishedDate })
+            bookResults.push({ title: result.title, author: result.authors[0], thumbnail: prependURL(result.thumbnail), pageCount: result.pageCount, publishedDate: result.publishedDate })
 
             if (index == 27) {
               return false
