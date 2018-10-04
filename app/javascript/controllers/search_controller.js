@@ -21,12 +21,10 @@ export default class extends Controller {
   sort() {
     if (this.order == 'Date') {
       options.order = 'newest'
-      console.log(options.order)
     } else if (this.order == 'Relevance') {
       options.order = 'relevance'
-      console.log(options.order)
     }
-    this.list(event)
+    this.list()
   }
 
   next() {
@@ -73,7 +71,11 @@ export default class extends Controller {
     return this.orderTarget.value
   }
 
-  list() {
+  list(event) {
+    if (event) {
+      event.preventDefault()
+    }
+
     this.inputTarget.value = this.input
     this.output.textContent = `"${this.input}"`
     $('section.search').attr('data-search-index', 0)
