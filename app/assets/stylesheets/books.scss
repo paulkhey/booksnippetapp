@@ -1,5 +1,7 @@
 $main-color: #000;
 $main-hover: #333;
+$success-color: #00b939;
+$success-hover: #00a733;
 $button-color: #084efa;
 $hover-color: #003bcc;
 
@@ -18,11 +20,11 @@ $hover-color: #003bcc;
 }
 
 .secondary-btn {
-  background: $main-color;
+  background: $success-color;
 }
 
 .secondary-btn:hover {
-  background: $main-hover;
+  background: $success-color;
 }
 
 .search {

@@ -52,4 +52,8 @@ $(document).ready(function() {
   window.onload = function() {
     addBook()
   }
+
+  $('.search form button').on('click', function() {
+    addBook()
+  })
 })
