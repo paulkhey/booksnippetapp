@@ -99,18 +99,22 @@ export default class extends Controller {
 			document.getElementsByClassName('search__lookup')[0].classList.remove('hide')	
 		}
 		
-    function paginateBooks(arr, size) {
-			clearResults()
+		function sliceBooks(arr, pages, size, bookSets) {
+			var j = 0
 			
-      var bookSets = []
-      var j = 0
-      var page
-			var pages = Math.ceil(arr.length/size)
-
       for (var i = 0; i < pages; i++) {
         bookSets[i] = arr.slice(j, j + size)
         j = j + size
       }
+		}
+		
+    function paginateBooks(arr, size) {
+			clearResults()
+		
+      var bookSets = []
+			var pages = Math.ceil(arr.length/size)
+			
+			sliceBooks(arr, pages, size, bookSets)
 
       bookSets.map(function(sets, index) {
 				sets = sets.reduce((unique, o) => {
@@ -121,11 +125,10 @@ export default class extends Controller {
 				},[])
 				
         $('#search-results').append(`<div data-target="search.page" class="search__set page page-${index+1}"></div>`)
-        page = index + 1
 
         for (var i = 0; i <= sets.length - 1; i ++) {
 					
-          $('.search__set:nth-of-type(' + page + ')').append(`
+          $('.search__set:nth-of-type(' + (index + 1) + ')').append(`
             <li class="search__book">
               <div class="search__book--detail">
                 <a href="${sets[i].link}" target="_blank">
