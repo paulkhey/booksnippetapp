@@ -34,11 +34,11 @@ export default class extends Controller {
   get order() {
     return this.orderTarget.value
   }
-	
+
   scrollTop() {
     $("html, body").animate({ scrollTop: $('.search__results').offset().top }, 100)
   }
-	
+
   sort() {
     if (this.order == 'Date') {
       options.order = 'newest'
@@ -91,22 +91,22 @@ export default class extends Controller {
       document.getElementsByClassName('search')[0].classList.add('full-height')
       document.getElementsByClassName('search__lookup')[0].classList.add('hide')
     }
-		
+
 		function showResults() {
-			document.getElementsByClassName('search__results')[0].classList.remove('hide')
-			document.getElementsByClassName('search')[0].classList.remove('full-height')
-			document.getElementsByClassName('search__lookup')[0].classList.remove('hide')	
+      document.getElementsByClassName('search__results')[0].classList.remove('hide')
+      document.getElementsByClassName('search')[0].classList.remove('full-height')
+      document.getElementsByClassName('search__lookup')[0].classList.remove('hide')
 		}
-		
+
 		function sliceBooks(arr, pages, size, bookSets) {
 			var j = 0
-			
+
       for (var i = 0; i < pages; i++) {
         bookSets[i] = arr.slice(j, j + size)
         j = j + size
       }
 		}
-		
+
 		function addPageNumbers(pages) {
       $('.search__set').append(`<div class="pagination">
 				<button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>
@@ -122,7 +122,7 @@ export default class extends Controller {
       $('.search__set:nth-of-type(' + pages + ') button[data-action="search#next"]').addClass('hide')
       $('.search__set .search__book:first-child').addClass('search__book--first')
 		}
-		
+
 		function uniqueBooks(sets) {
 			return (sets.reduce((unique, o) => {
 		    if(!unique.some(obj => obj.title.toLowerCase() === o.title.toLowerCase() && obj.value === o.value)) {
@@ -131,12 +131,12 @@ export default class extends Controller {
 		    return unique;
 			},[]))
 		}
-		
+
 		function booksWithValues(result) {
 			return !(result.id == undefined || result.title == undefined || result.authors == undefined || result.thumbnail == undefined || result.pageCount == undefined || result.publishedDate == undefined || result.link == undefined)
 		}
-		
-    function paginateBooks(arr, size) {		
+
+    function paginateBooks(arr, size) {
       var bookSets = []
 			var pages = Math.ceil(arr.length/size)
 			clearResults()
@@ -170,7 +170,7 @@ export default class extends Controller {
 			showResults()
 			addPageNumbers(pages)
     }
-	
+
     if (this.input.length != 0) {
 			books.search(this.input, options, function(error, results) {
         if (!error) {
@@ -184,7 +184,7 @@ export default class extends Controller {
 							publishedDate: result.publishedDate,
 							link: result.link
 						})
-							
+
             if (index == 32) {
               return false
             } else {
