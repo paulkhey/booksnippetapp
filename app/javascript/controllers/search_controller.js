@@ -95,9 +95,9 @@ export default class extends Controller {
       books.search(this.input, options, function(error, results) {
         if (!error) {
           results.filter(function(result) {
-            return !(result.title == undefined || result.authors == undefined || result.thumbnail == undefined || result.pageCount == undefined || result.publishedDate == undefined || result.link == undefined)
+            return !(result.id == undefined || result.title == undefined || result.authors == undefined || result.thumbnail == undefined || result.pageCount == undefined || result.publishedDate == undefined || result.link == undefined)
           }).every(function(result, index) {
-            bookResults.push({ title: result.title, author: result.authors[0], thumbnail: prependURL(result.thumbnail), pageCount: result.pageCount, publishedDate: result.publishedDate, link: result.link })
+            bookResults.push({ id: result.id, title: result.title, author: result.authors[0], thumbnail: prependURL(result.thumbnail), pageCount: result.pageCount, publishedDate: result.publishedDate, link: result.link })
 
             if (index == 34) {
               return false
@@ -118,11 +118,22 @@ export default class extends Controller {
               j = j + size
             }
 
+
             bookSets.map(function(sets, index) {
+
+
+							sets = sets.reduce((unique, o) => {
+							    if(!unique.some(obj => obj.title.toLowerCase() === o.title.toLowerCase() && obj.value === o.value)) {
+							      unique.push(o);
+							    }
+							    return unique;
+							},[])
+							
               $('#search-results').append(`<div data-target="search.page" class="search__set page page-${index+1}"></div>`)
               page = index + 1
 
               for (var i = 0; i <= sets.length - 1; i ++) {
+								
                 $('.search__set:nth-of-type(' + page + ')').append(`
                   <li class="search__book">
                     <div class="search__book--detail">
@@ -137,7 +148,7 @@ export default class extends Controller {
                       </div>
                     </div>
                     <button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>
-                    <div class="search__book--added primary-btn secondary-btn hide" style="cursor: initial" aria-label="Book added">Book Added!</div>
+                    <div class="search__book--added primary-btn secondary-btn hide" style="cursor: initial" aria-label="Book added">Added!</div>
                     <p class="search__book--warning hide" aria-label="Book warning" style="color: red">This book is already on your list.</p>
                     <a href="/books" class="search__book--notice hide" aria-label="Book notice" style="color: #00b939">Go to your list of books!</a>
                   </li>`)
@@ -160,7 +171,7 @@ export default class extends Controller {
             }
 
             $('.search__set:nth-of-type(1) .pagination button:nth-of-type(1)').addClass('hide')
-            $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(3)').addClass('hide')
+            $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(2)').addClass('hide')
             $('.search__set .search__book:first-child').addClass('search__book--first')
           }
           paginateBooks(bookResults, 7)
