@@ -18,43 +18,38 @@
 //= require_tree .
 
 $(document).ready(function() {
+  $('html').on('click','.search__book--action', function() {
+    var book = $(this).siblings('.search__book--detail')
+    var bookinfo = book.children('.search__info')
+    var title = bookinfo.children('a').children('.search__title').html()
+    var author = bookinfo.children('.search__author').children('span').html()
+    var image = book.children('a').children('img.search__image').attr('src')
+    var link = bookinfo.children('a').attr('href')
+    console.log(title)
+    console.log(author)
+    console.log(image)
+    console.log(link)
 
-  function addBook() {
-    $('.search__results').on('click','.search__book--action', function() {
-      var book = $(this).siblings('.search__book--detail')
-      var bookinfo = book.children('.search__info')
-      var title = bookinfo.children('a').children('.search__title').html()
-      var author = bookinfo.children('.search__author').children('span').html()
-      var image = book.children('a').children('img.search__image').attr('src')
-      var link = bookinfo.children('a').attr('href')
-      console.log(title)
-      console.log(author)
-      console.log(image)
-      console.log(link)
+    const context = $(this)
 
-      const context = $(this)
-
-      $.ajax({
-        type: 'POST',
-        url: '/books',
-        data: { book: { title: title, author: author, cover: image, link: link}},
-        success: function(data) {
-          if (typeof(data) == 'object') {
-            context.addClass('hide')
-            context.siblings('.search__book--notice').removeClass('hide')
-            context.siblings('.search__book--added').removeClass('hide')
-            console.log('Added Book!')
-          } else {
-            context.siblings('.search__book--warning').removeClass('hide')
-            console.log('Sorry, you already have this on your list.')
-          }
-        },
-        error: function() {
-          console.log('failed!')
+    $.ajax({
+      type: 'POST',
+      url: '/books',
+      data: { book: { title: title, author: author, cover: image, link: link}},
+      success: function(data) {
+        if (typeof(data) == 'object') {
+          context.addClass('hide')
+          context.siblings('.search__book--notice').removeClass('hide')
+          context.siblings('.search__book--added').removeClass('hide')
+          console.log('Added Book!')
+        } else {
+          context.siblings('.search__book--warning').removeClass('hide')
+          console.log('Sorry, you already have this on your list.')
         }
-      })
+      },
+      error: function() {
+        console.log('failed!')
+      }
     })
-  }
-
-  addBook()
+  })
 })
