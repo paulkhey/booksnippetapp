@@ -41,7 +41,7 @@ $(document).ready(function() {
           context.addClass('hide')
           context.siblings('.search__book--notice').removeClass('hide')
           context.siblings('.search__book--added').removeClass('hide')
-          console.log('Added Book!')
+          console.log('Book Added!')
         } else {
           context.siblings('.search__book--warning').removeClass('hide')
           console.log('Sorry, you already have this on your list.')

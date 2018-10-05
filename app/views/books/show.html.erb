@@ -14,5 +14,5 @@
   <strong>Cover:</strong>
   <img src="<%= @book.cover %>" alt="<%= @book.title %>">
 </p>
-
+<%= link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', books_path %>
