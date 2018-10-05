@@ -5,10 +5,6 @@ var options = {
     order: 'relevance'
 }
 
-function scrollTop() {
-  $("html, body").animate({ scrollTop: $('.search__results').offset().top }, 0)
-}
-
 import { Controller } from "stimulus"
 
 export default class extends Controller {
@@ -16,39 +12,6 @@ export default class extends Controller {
 
   initialize() {
     this.showCurrentPage()
-  }
-
-  page() {
-    scrollTop()
-  }
-
-  sort() {
-    if (this.order == 'Date') {
-      options.order = 'newest'
-    } else if (this.order == 'Relevance') {
-      options.order = 'relevance'
-    }
-    this.list()
-  }
-
-  next() {
-    if (this.index == 0) {
-      $('.page-1').removeClass('page-1')
-    }
-    this.index++
-    scrollTop()
-  }
-
-
-  previous() {
-    this.index--
-    scrollTop()
-  }
-
-  showCurrentPage() {
-    this.pageTargets.forEach((el, i) => {
-      el.classList.toggle("page--current", this.index == i)
-    })
   }
 
   get index() {
@@ -71,12 +34,47 @@ export default class extends Controller {
   get order() {
     return this.orderTarget.value
   }
+	
+	scrollTop() {
+	  $("html, body").animate({ scrollTop: $('.search__results').offset().top }, 700)
+	}
+	
+  sort() {
+    if (this.order == 'Date') {
+      options.order = 'newest'
+    } else if (this.order == 'Relevance') {
+      options.order = 'relevance'
+    }
+    this.list()
+  }
+	
+
+  next() {
+    if (this.index == 0) {
+      $('.page-1').removeClass('page-1')
+    }
+    this.index++
+    this.scrollTop()
+  }
+
+
+  previous() {
+    this.index--
+    this.scrollTop()
+  }
+
+  showCurrentPage() {
+    this.pageTargets.forEach((el, i) => {
+      el.classList.toggle("page--current", this.index == i)
+    })
+  }
 
   list(event) {
     if (event) {
       event.preventDefault()
     }
 
+    var bookResults = []
     this.inputTarget.value = this.input
     this.output.textContent = `"${this.input}"`
     $('section.search').attr('data-search-index', 0)
@@ -89,8 +87,83 @@ export default class extends Controller {
       }
     }
 
-    var bookResults = []
+		function clearResults() {
+      $('#search-results').html('')
+      $('.search').addClass('full-height')
+      $('.search__sort').addClass('hide')
+      $('.search__results').addClass('hide')
+    	$('.results__copy').addClass('hide')
+		}
+		
+    function paginateBooks(arr, size) {
+      var bookSets = []
+      var j = 0
+      var page
+			var pages = Math.ceil(arr.length/size)
 
+      $('#search-results').html('')
+
+      for (var i = 0; i < pages; i++) {
+        bookSets[i] = arr.slice(j, j + size)
+        j = j + size
+      }
+
+
+      bookSets.map(function(sets, index) {
+				sets = sets.reduce((unique, o) => {
+				    if(!unique.some(obj => obj.title.toLowerCase() === o.title.toLowerCase() && obj.value === o.value)) {
+				      unique.push(o);
+				    }
+				    return unique;
+				},[])
+				
+        $('#search-results').append(`<div data-target="search.page" class="search__set page page-${index+1}"></div>`)
+        page = index + 1
+
+        for (var i = 0; i <= sets.length - 1; i ++) {
+					
+          $('.search__set:nth-of-type(' + page + ')').append(`
+            <li class="search__book">
+              <div class="search__book--detail">
+                <a href="${sets[i].link}" target="_blank">
+                  <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
+                </a>
+                <div class="search__info">
+                  <a href="${sets[i].link}" target="_blank"><p class="search__title">${sets[i].title}</p></a>
+                  <p class="search__author">by <span style="color: #003bcc; font-weight: bold">${sets[i].author}</span></p>
+                  <p class="search__date"><strong>Published:</strong> ${moment(sets[i].publishedDate, 'YYYY-MM-DD').format('MMMM D, YYYY')}</p>
+                  <p class="search__pages"><strong>Length:</strong> ${sets[i].pageCount} Pages</p>
+                </div>
+              </div>
+              <button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>
+              <div class="search__book--added primary-btn secondary-btn hide" style="cursor: initial" aria-label="Book added">Added!</div>
+              <p class="search__book--warning hide" aria-label="Book warning" style="color: red">This book is already on your list.</p>
+              <a href="/books" class="search__book--notice hide" aria-label="Book notice" style="color: #00b939">Go to your list of books!</a>
+            </li>`)
+        }
+      })
+
+
+      $('.search__sort').removeClass('hide')
+      $('.search__results').removeClass('hide')
+      $('.search').removeClass('full-height')
+      $('.results__copy').removeClass('hide')
+
+      $('.search__set').append(`<div class="pagination">
+        <button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>
+        <div class="primary-btn page-number" aria-label="Current page"></div>
+        <button class="primary-btn" data-action="search#next" aria-label="Next page">Next →</button>
+        </div>`)
+
+      for (var n = 1; n <= pages; n++) {
+        $('.search__set:nth-of-type(' + n + ') .pagination .page-number').append(n)
+      }
+
+      $('.search__set:nth-of-type(1) .pagination button[data-action="search#previous"]').addClass('hide')
+      $('.search__set:nth-of-type(' + pages + ') button[data-action="search#next"]').addClass('hide')
+      $('.search__set .search__book:first-child').addClass('search__book--first')
+    }
+		
     if (this.input.length != 0) {
       books.search(this.input, options, function(error, results) {
         if (!error) {
@@ -105,87 +178,13 @@ export default class extends Controller {
               return true
             }
           })
-
-          function paginateBooks(arr, size) {
-            var bookSets = []
-            var j = 0
-            var page
-
-            $('#search-results').html('')
-
-            for (var i = 0; i < Math.ceil(arr.length / size); i++) {
-              bookSets[i] = arr.slice(j, j + size)
-              j = j + size
-            }
-
-
-            bookSets.map(function(sets, index) {
-
-
-							sets = sets.reduce((unique, o) => {
-							    if(!unique.some(obj => obj.title.toLowerCase() === o.title.toLowerCase() && obj.value === o.value)) {
-							      unique.push(o);
-							    }
-							    return unique;
-							},[])
-							
-              $('#search-results').append(`<div data-target="search.page" class="search__set page page-${index+1}"></div>`)
-              page = index + 1
-
-              for (var i = 0; i <= sets.length - 1; i ++) {
-								
-                $('.search__set:nth-of-type(' + page + ')').append(`
-                  <li class="search__book">
-                    <div class="search__book--detail">
-                      <a href="${sets[i].link}" target="_blank">
-                        <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
-                      </a>
-                      <div class="search__info">
-                        <a href="${sets[i].link}" target="_blank"><p class="search__title">${sets[i].title}</p></a>
-                        <p class="search__author">by <span style="color: #003bcc; font-weight: bold">${sets[i].author}</span></p>
-                        <p class="search__date"><strong>Published:</strong> ${moment(sets[i].publishedDate, 'YYYY-MM-DD').format('MMMM D, YYYY')}</p>
-                        <p class="search__pages"><strong>Length:</strong> ${sets[i].pageCount} Pages</p>
-                      </div>
-                    </div>
-                    <button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>
-                    <div class="search__book--added primary-btn secondary-btn hide" style="cursor: initial" aria-label="Book added">Added!</div>
-                    <p class="search__book--warning hide" aria-label="Book warning" style="color: red">This book is already on your list.</p>
-                    <a href="/books" class="search__book--notice hide" aria-label="Book notice" style="color: #00b939">Go to your list of books!</a>
-                  </li>`)
-              }
-            })
-
-            $('.search__sort').removeClass('hide')
-            $('.search__results').removeClass('hide')
-            $('.search').removeClass('full-height')
-            $('.results__copy').removeClass('hide')
-
-            $('.search__set').append(`<div class="pagination">
-              <button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>
-              <div class="primary-btn page-number" data-action="search#page" aria-label="Current page"></div>
-              <button class="primary-btn" data-action="search#next" aria-label="Next page">Next →</button>
-              </div>`)
-
-            for (var n = 1; n <= Math.ceil(arr.length / size); n++) {
-              $('.search__set:nth-of-type(' + n + ') .pagination .page-number').append(n)
-            }
-
-            $('.search__set:nth-of-type(1) .pagination button:nth-of-type(1)').addClass('hide')
-            $('.search__set:nth-of-type(' + Math.ceil(arr.length/size) + ') button:nth-of-type(2)').addClass('hide')
-            $('.search__set .search__book:first-child').addClass('search__book--first')
-          }
           paginateBooks(bookResults, 7)
-
         } else {
           console.log(error)
         }
       })
     } else {
-      $('#search-results').html('')
-      $('.search__sort').addClass('hide')
-      $('.search__results').addClass('hide')
-      $('.search').addClass('full-height')
-      $('.results__copy').addClass('hide')
+			clearResults()
     }
   }
 }
