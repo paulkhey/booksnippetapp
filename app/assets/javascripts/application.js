@@ -18,8 +18,9 @@
 //= require_tree .
 
 $(document).ready(function() {
+
   function addBook() {
-    $('.search__results').on('click','.search__book--action', function() {
+    $('.search').on('click','.search__book--action', function() {
       var book = $(this).siblings('.search__book--detail')
       var bookinfo = book.children('.search__info')
       var title = bookinfo.children('a').children('.search__title').html()
@@ -50,8 +51,4 @@ $(document).ready(function() {
   }
 
   addBook()
-
-  setTimeout(function() {
-    addBook()
-  }, 3000)
 })

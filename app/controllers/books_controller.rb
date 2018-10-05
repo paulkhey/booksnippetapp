@@ -14,11 +14,13 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
+    redirect_to '/books'
     @book = Book.new
   end
 
   # GET /books/1/edit
   def edit
+    redirect_to @book
   end
 
   # POST /books
@@ -40,6 +42,8 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
+    redirect_to @book
+
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
