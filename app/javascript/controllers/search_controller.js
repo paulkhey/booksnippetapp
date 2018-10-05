@@ -125,6 +125,15 @@ export default class extends Controller {
       $('.search__set .search__book:first-child').addClass('search__book--first')
 		}
 		
+		function uniqueBooks(sets) {
+			return (sets.reduce((unique, o) => {
+		    if(!unique.some(obj => obj.title.toLowerCase() === o.title.toLowerCase() && obj.value === o.value)) {
+		      unique.push(o);
+		    }
+		    return unique;
+			},[]))
+		}
+		
     function paginateBooks(arr, size) {
 			clearResults()
 		
@@ -133,13 +142,9 @@ export default class extends Controller {
 			
 			sliceBooks(arr, pages, size, bookSets)
 
-      bookSets.map(function(sets, index) {
-				sets = sets.reduce((unique, o) => {
-				    if(!unique.some(obj => obj.title.toLowerCase() === o.title.toLowerCase() && obj.value === o.value)) {
-				      unique.push(o);
-				    }
-				    return unique;
-				},[])
+      bookSets.forEach(function(sets, index) {
+				
+				sets = uniqueBooks(sets)
 				
         $('#search-results').append(`<div data-target="search.page" class="search__set page page-${index+1}"></div>`)
 
