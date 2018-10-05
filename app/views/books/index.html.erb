@@ -6,7 +6,6 @@
     <p class="books__author"><%= book.author %></p>
     <img class="books__image" src="<%= book.cover %>" alt="<%= book.title %>">
       <%= link_to 'Show', book %>
-      <%= link_to 'Edit', edit_book_path(book) %>
       <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 </section>

@@ -9,11 +9,6 @@ function scrollTop() {
   $("html, body").animate({ scrollTop: $('.search').offset().top }, 300)
 }
 
-
-  function cool() {
-    console.log(1)
-  }
-
 import { Controller } from "stimulus"
 
 export default class extends Controller {
@@ -146,8 +141,6 @@ export default class extends Controller {
                   </li>`)
               }
             })
-
-
 
             $('.search__sort').removeClass('hide')
             $('.search__results').removeClass('hide')
