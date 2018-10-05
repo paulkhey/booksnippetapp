@@ -36,7 +36,7 @@ export default class extends Controller {
   }
 	
 	scrollTop() {
-	  $("html, body").animate({ scrollTop: $('.search__results').offset().top }, 700)
+	  $("html, body").animate({ scrollTop: $('.search__results').offset().top }, 100)
 	}
 	
   sort() {
@@ -77,7 +77,7 @@ export default class extends Controller {
     var bookResults = []
     this.inputTarget.value = this.input
     this.output.textContent = `"${this.input}"`
-    $('section.search').attr('data-search-index', 0)
+		document.getElementsByClassName('search')[0].setAttribute('data-search-index', 0);
 
     function prependURL(url) {
       if (url.substr(0, 8) !== 'http://' ) {
@@ -93,8 +93,13 @@ export default class extends Controller {
 			document.getElementsByClassName('search__lookup')[0].classList.add('hide')
 		}
 		
+		function showResults() {
+			document.getElementsByClassName('search__results')[0].classList.remove('hide')
+			document.getElementsByClassName('search')[0].classList.remove('full-height')
+			document.getElementsByClassName('search__lookup')[0].classList.remove('hide')	
+		}
+		
     function paginateBooks(arr, size) {
-			
 			clearResults()
 			
       var bookSets = []
@@ -141,11 +146,7 @@ export default class extends Controller {
         }
       })
 
-
-      // $('.search__sort').removeClass('hide')
-      $('.search__results').removeClass('hide')
-      $('.search').removeClass('full-height')
-      $('.search__lookup').removeClass('hide')
+			showResults()
 
       $('.search__set').append(`<div class="pagination">
         <button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>
