@@ -42,7 +42,7 @@ $(document).ready(function() {
           context.addClass('hide')
           context.siblings('.search__book--notice').removeClass('hide')
           context.siblings('.search__book--added').removeClass('hide')
-          console.log('Book Added!')
+          console.log('Added!')
         } else {
           context.siblings('.search__book--warning').removeClass('hide')
           console.log('Sorry, you already have this on your list.')
@@ -53,4 +53,19 @@ $(document).ready(function() {
       }
     })
   })
+	
+	function clearResults() {
+		document.getElementById('search-results').innerHTML = ''
+		document.getElementsByClassName('search__results')[0].classList.add('hide')
+		document.getElementsByClassName('search')[0].classList.add('full-height')
+		document.getElementsByClassName('search__lookup')[0].classList.add('hide')
+	}
+	
+	// need to bind to all links on navigation, be more specific once navigation is added. select anchor and class
+	$('html').on('click','a', function() {
+		if ($(this).html() != 'Search' && window.location.pathname == '/search') {
+			clearResults()			
+		}
+	})
+	
 })

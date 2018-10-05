@@ -89,6 +89,7 @@ export default class extends Controller {
 
 		function clearResults() {
 			document.getElementById('search-results').innerHTML = ''
+			document.getElementsByClassName('search__results')[0].classList.add('hide')
 			document.getElementsByClassName('search')[0].classList.add('full-height')
 			document.getElementsByClassName('search__lookup')[0].classList.add('hide')
 		}
@@ -106,6 +107,22 @@ export default class extends Controller {
         bookSets[i] = arr.slice(j, j + size)
         j = j + size
       }
+		}
+		
+		function addPageNumbers(pages) {
+      $('.search__set').append(`<div class="pagination">
+        <button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>
+        <div class="primary-btn page-number" aria-label="Current page"></div>
+        <button class="primary-btn" data-action="search#next" aria-label="Next page">Next →</button>
+        </div>`)
+
+      for (var n = 1; n <= pages; n++) {
+        $('.search__set:nth-of-type(' + n + ') .pagination .page-number').append(n)
+      }
+
+      $('.search__set:nth-of-type(1) .pagination button[data-action="search#previous"]').addClass('hide')
+      $('.search__set:nth-of-type(' + pages + ') button[data-action="search#next"]').addClass('hide')
+      $('.search__set .search__book:first-child').addClass('search__book--first')
 		}
 		
     function paginateBooks(arr, size) {
@@ -148,32 +165,30 @@ export default class extends Controller {
             </li>`)
         }
       })
-
 			showResults()
-
-      $('.search__set').append(`<div class="pagination">
-        <button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>
-        <div class="primary-btn page-number" aria-label="Current page"></div>
-        <button class="primary-btn" data-action="search#next" aria-label="Next page">Next →</button>
-        </div>`)
-
-      for (var n = 1; n <= pages; n++) {
-        $('.search__set:nth-of-type(' + n + ') .pagination .page-number').append(n)
-      }
-
-      $('.search__set:nth-of-type(1) .pagination button[data-action="search#previous"]').addClass('hide')
-      $('.search__set:nth-of-type(' + pages + ') button[data-action="search#next"]').addClass('hide')
-      $('.search__set .search__book:first-child').addClass('search__book--first')
+			addPageNumbers(pages)
     }
-		
+
+		function booksWithValues(result) {
+			return !(result.id == undefined || result.title == undefined || result.authors == undefined || result.thumbnail == undefined || result.pageCount == undefined || result.publishedDate == undefined || result.link == undefined)
+		}
+				
     if (this.input.length != 0) {
       books.search(this.input, options, function(error, results) {
         if (!error) {
           results.filter(function(result) {
-            return !(result.id == undefined || result.title == undefined || result.authors == undefined || result.thumbnail == undefined || result.pageCount == undefined || result.publishedDate == undefined || result.link == undefined)
+            return booksWithValues(result)
           }).every(function(result, index) {
-            bookResults.push({ id: result.id, title: result.title, author: result.authors[0], thumbnail: prependURL(result.thumbnail), pageCount: result.pageCount, publishedDate: result.publishedDate, link: result.link })
-
+            bookResults.push({
+							id: result.id,
+							title: result.title,
+							author: result.authors[0],
+							thumbnail: prependURL(result.thumbnail),
+							pageCount: result.pageCount,
+							publishedDate: result.publishedDate,
+							link: result.link
+						})
+							
             if (index == 34) {
               return false
             } else {
@@ -182,6 +197,8 @@ export default class extends Controller {
           })
           paginateBooks(bookResults, 7)
         } else {
+					clearResults()
+					document.getElementById('search-results').innerHTML = '<p style="font-weight:bold; text-align:center;width:100%">Sorry, try again.</p>'
           console.log(error)
         }
       })
