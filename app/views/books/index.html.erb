@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-<br>
 <section class="books">
   <% @mybooks.each do |book| %>
     <p class="books__title"><%= book.title %></p>
@@ -8,6 +7,9 @@
       <%= link_to 'Show', book %>
       <%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
+	<% if @mybooks.empty? %>
+		View to render when no books are found.
+	<% end %>
 </section>
 <%= will_paginate @mybooks %>
 

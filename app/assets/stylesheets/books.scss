@@ -301,6 +301,11 @@ a.next_page {
 	@extend %paginate-btn;
 }
 
+p#notice {
+	text-align: center;
+  font-weight: bold;
+  color: red;
+}
 
 @media (max-width: 768px) {
 
