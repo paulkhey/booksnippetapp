@@ -58,7 +58,7 @@ $(document).ready(function() {
     document.getElementsByClassName('search__lookup')[0].classList.add('hide')
   }
 
-  // refactor: bemore specific once navigation is added. select anchor and class
+  // refactor: be more specific once navigation is added. select anchor and class
   $('html').on('click','a', function() {
     if ($(this).html() != 'Search' && window.location.pathname == '/search') {
       clearResults()
