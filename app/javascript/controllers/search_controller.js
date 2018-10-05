@@ -86,10 +86,10 @@ export default class extends Controller {
     }
 
     function clearResults() {
-			document.getElementById('search-results').innerHTML = ''
-			document.getElementsByClassName('search__results')[0].classList.add('hide')
-			document.getElementsByClassName('search')[0].classList.add('full-height')
-			document.getElementsByClassName('search__lookup')[0].classList.add('hide')
+      document.getElementById('search-results').innerHTML = ''
+      document.getElementsByClassName('search__results')[0].classList.add('hide')
+      document.getElementsByClassName('search')[0].classList.add('full-height')
+      document.getElementsByClassName('search__lookup')[0].classList.add('hide')
     }
 		
 		function showResults() {
