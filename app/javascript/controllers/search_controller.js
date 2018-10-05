@@ -88,26 +88,24 @@ export default class extends Controller {
     }
 
 		function clearResults() {
-      $('#search-results').html('')
-      $('.search').addClass('full-height')
-      $('.search__sort').addClass('hide')
-      $('.search__results').addClass('hide')
-    	$('.results__copy').addClass('hide')
+			document.getElementById('search-results').innerHTML = ''
+			document.getElementsByClassName('search')[0].classList.add('full-height')
+			document.getElementsByClassName('search__lookup')[0].classList.add('hide')
 		}
 		
     function paginateBooks(arr, size) {
+			
+			clearResults()
+			
       var bookSets = []
       var j = 0
       var page
 			var pages = Math.ceil(arr.length/size)
 
-      $('#search-results').html('')
-
       for (var i = 0; i < pages; i++) {
         bookSets[i] = arr.slice(j, j + size)
         j = j + size
       }
-
 
       bookSets.map(function(sets, index) {
 				sets = sets.reduce((unique, o) => {
@@ -144,10 +142,10 @@ export default class extends Controller {
       })
 
 
-      $('.search__sort').removeClass('hide')
+      // $('.search__sort').removeClass('hide')
       $('.search__results').removeClass('hide')
       $('.search').removeClass('full-height')
-      $('.results__copy').removeClass('hide')
+      $('.search__lookup').removeClass('hide')
 
       $('.search__set').append(`<div class="pagination">
         <button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>

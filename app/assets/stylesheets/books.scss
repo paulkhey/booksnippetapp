@@ -67,10 +67,6 @@ $hover-color: #003bcc;
   margin: 1em 0 1.5em;
 }
 
-.search__sort.hide {
-  display: none;
-}
-
 .search__bar h1 {
   margin-top: 0;
 }
@@ -112,12 +108,12 @@ $hover-color: #003bcc;
 }
 
 
-.results__copy {
+.search__lookup p {
   text-align: center;
   margin: 1.5em 0 0;
 }
 
-.results__copy.hide {
+.search__lookup.hide {
   display: none;
 }
 
