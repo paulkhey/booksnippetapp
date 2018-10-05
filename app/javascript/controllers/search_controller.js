@@ -6,7 +6,7 @@ var options = {
 }
 
 function scrollTop() {
-  $("html, body").animate({ scrollTop: $('.search').offset().top }, 300)
+  $("html, body").animate({ scrollTop: $('.search__results').offset().top }, 0)
 }
 
 import { Controller } from "stimulus"
@@ -151,7 +151,7 @@ export default class extends Controller {
 
             $('.search__set').append(`<div class="pagination">
               <button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>
-              <button class="primary-btn page-number" data-action="search#page" aria-label="Current page"></button>
+              <div class="primary-btn page-number" data-action="search#page" aria-label="Current page"></div>
               <button class="primary-btn" data-action="search#next" aria-label="Next page">Next →</button>
               </div>`)
 

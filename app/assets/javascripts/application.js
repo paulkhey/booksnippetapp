@@ -18,6 +18,7 @@
 //= require_tree .
 
 $(document).ready(function() {
+	
   $('html').on('click','.search__book--action', function() {
     var book = $(this).siblings('.search__book--detail')
     var bookinfo = book.children('.search__info')

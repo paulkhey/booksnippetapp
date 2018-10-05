@@ -237,7 +237,11 @@ $hover-color: #003bcc;
   margin-bottom: 3em;
 }
 
-.pagination button {
+.page-number {
+	cursor: initial;
+}
+
+.pagination .primary-btn {
   font-weight: bold;
   margin: 0 .5em;
   background: $main-color;
@@ -249,6 +253,52 @@ $hover-color: #003bcc;
 
 .pagination button.hide {
   visibility: hidden;
+}
+
+%paginate-btn {
+	font-style: normal;
+  border: 0;
+  background: $main-color;
+  color: #fff;
+  padding: 0.6em 0.8em;
+  border-radius: 0;
+  font-weight: bold;
+}
+
+.previous_page.disabled,
+.next_page.disabled {
+	visibility: hidden;
+}
+
+.pagination a {
+	display: none;
+}
+
+a[rel="prev"],
+a[rel="next"] {
+	display: none;
+}
+
+a.previous_page,
+.previous_page.disabled,
+.next_page.disabled,
+a.next_page {
+	display: block;
+	text-decoration: none;
+	@extend %paginate-btn;
+}
+
+.next_page {
+	margin-left: 1em;
+}
+
+.previous_page, {
+	margin-right: 1em;
+}
+
+.current {
+	cursor: initial;
+	@extend %paginate-btn;
 }
 
 

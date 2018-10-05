@@ -4,7 +4,8 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @mybooks = Book.all
+    # @mybooks = Book.all
+    @mybooks = Book.paginate(:page => params[:page], :per_page => 1)
   end
 
   # GET /books/1
