@@ -92,27 +92,27 @@ export default class extends Controller {
       document.getElementsByClassName('search__lookup')[0].classList.add('hide')
     }
 
-		function showResults() {
+    function showResults() {
       document.getElementsByClassName('search__results')[0].classList.remove('hide')
       document.getElementsByClassName('search')[0].classList.remove('full-height')
       document.getElementsByClassName('search__lookup')[0].classList.remove('hide')
-		}
+    }
 
-		function sliceBooks(arr, pages, size, bookSets) {
-			var j = 0
+    function sliceBooks(arr, pages, size, bookSets) {
+      var j = 0
 
       for (var i = 0; i < pages; i++) {
         bookSets[i] = arr.slice(j, j + size)
         j = j + size
       }
-		}
+    }
 
-		function addPageNumbers(pages) {
+    function addPageNumbers(pages) {
       $('.search__set').append(`<div class="pagination">
-				<button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>
-        <div class="primary-btn page-number" aria-label="Current page"></div>
-        <button class="primary-btn" data-action="search#next" aria-label="Next page">Next →</button>
-			</div>`)
+      <button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>
+      <div class="primary-btn page-number" aria-label="Current page"></div>
+      <button class="primary-btn" data-action="search#next" aria-label="Next page">Next →</button>
+      </div>`)
 
       for (var n = 1; n <= pages; n++) {
         $('.search__set:nth-of-type(' + n + ') .pagination .page-number').append(n)
@@ -121,85 +121,82 @@ export default class extends Controller {
       $('.search__set:nth-of-type(1) .pagination button[data-action="search#previous"]').addClass('hide')
       $('.search__set:nth-of-type(' + pages + ') button[data-action="search#next"]').addClass('hide')
       $('.search__set .search__book:first-child').addClass('search__book--first')
-		}
+    }
 
-		function uniqueBooks(sets) {
-			return (sets.reduce((unique, o) => {
-		    if(!unique.some(obj => obj.title.toLowerCase() === o.title.toLowerCase() && obj.value === o.value)) {
-		      unique.push(o);
-		    }
-		    return unique;
-			},[]))
-		}
+    function uniqueBooks(sets) {
+      return (sets.reduce((unique, o) => {
+        if(!unique.some(obj => obj.title.toLowerCase() === o.title.toLowerCase() && obj.value === o.value)) {
+          unique.push(o);
+        }
+        return unique;
+      },[]))
+    }
 
-		function booksWithValues(result) {
-			return !(result.id == undefined || result.title == undefined || result.authors == undefined || result.thumbnail == undefined || result.pageCount == undefined || result.publishedDate == undefined || result.link == undefined)
-		}
+    function booksWithValues(result) {
+      return !(result.id == undefined || result.title == undefined || result.authors == undefined || result.thumbnail == undefined || result.pageCount == undefined || result.publishedDate == undefined || result.link == undefined)
+    }
 
     function paginateBooks(arr, size) {
       var bookSets = []
-			var pages = Math.ceil(arr.length/size)
-			clearResults()
-			sliceBooks(arr, pages, size, bookSets)
+      var pages = Math.ceil(arr.length/size)
+      clearResults()
+      sliceBooks(arr, pages, size, bookSets)
 
       bookSets.forEach(function(sets, index) {
-				sets = uniqueBooks(sets)
-				document.getElementById('search-results').innerHTML += `<div data-target="search.page" class="search__set page page-${index+1}"></div>`
+        sets = uniqueBooks(sets)
+        document.getElementById('search-results').innerHTML += `<div data-target="search.page" class="search__set page page-${index+1}"></div>`
 
-				sets.forEach(function(set) {
+        sets.forEach(function(set) {
           $('.search__set:nth-of-type(' + (index + 1)  + ')').append(`
-            <li class="search__book">
-              <div class="search__book--detail">
-                <a href="${set.link}" target="_blank">
-                  <img class="search__image" src="${set.thumbnail}" alt="${set.title} cover">
-                </a>
-                <div class="search__info">
-                  <a href="${set.link}" target="_blank"><p class="search__title">${set.title}</p></a>
-                  <p class="search__author">by <span style="color: #003bcc; font-weight: bold">${set.author}</span></p>
-                  <p class="search__date"><strong>Published:</strong> ${moment(set.publishedDate, 'YYYY-MM-DD').format('MMMM D, YYYY')}</p>
-                  <p class="search__pages"><strong>Length:</strong> ${set.pageCount} Pages</p>
-                </div>
+          <li class="search__book">
+            <div class="search__book--detail">
+              <a href="${set.link}" target="_blank"><img class="search__image" src="${set.thumbnail}" alt="${set.title} cover"></a>
+              <div class="search__info">
+                <a href="${set.link}" target="_blank"><p class="search__title">${set.title}</p></a>
+                <p class="search__author">by <span style="color: #003bcc; font-weight: bold">${set.author}</span></p>
+                <p class="search__date"><strong>Published:</strong> ${moment(set.publishedDate, 'YYYY-MM-DD').format('MMMM D, YYYY')}</p>
+                <p class="search__pages"><strong>Length:</strong> ${set.pageCount} Pages</p>
               </div>
-              <button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>
-              <div class="search__book--added primary-btn secondary-btn hide" style="cursor: initial" aria-label="Book added">Added!</div>
-              <p class="search__book--warning hide" aria-label="Book warning" style="color: red">This book is already on your list.</p>
-              <a href="/books" class="search__book--notice hide" aria-label="Book notice" style="color: #00b939">Go to your list of books!</a>
-            </li>`)
-				})
+            </div>
+            <button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>
+            <div class="search__book--added primary-btn secondary-btn hide" style="cursor: initial" aria-label="Book added">Added!</div>
+            <p class="search__book--warning hide" aria-label="Book warning" style="color: red">This book is already on your list.</p>
+            <a href="/books" class="search__book--notice hide" aria-label="Book notice" style="color: #00b939">Go to your list of books!</a>
+          </li>`)
+        })
       })
-			showResults()
-			addPageNumbers(pages)
+      showResults()
+      addPageNumbers(pages)
     }
 
     if (this.input.length != 0) {
-			books.search(this.input, options, function(error, results) {
-        if (!error) {
-					results.filter((result) => booksWithValues(result)).every((result, index) => {
-            bookResults.push({
-							id: result.id,
-							title: result.title,
-							author: result.authors[0],
-							thumbnail: prependURL(result.thumbnail),
-							pageCount: result.pageCount,
-							publishedDate: result.publishedDate,
-							link: result.link
-						})
-
-            if (index == 32) {
-              return false
-            } else {
-              return true
-            }
+      books.search(this.input, options, function(error, results) {
+      if (!error) {
+        results.filter((result) => booksWithValues(result)).every((result, index) => {
+          bookResults.push({
+            id: result.id,
+            title: result.title,
+            author: result.authors[0],
+            thumbnail: prependURL(result.thumbnail),
+            pageCount: result.pageCount,
+            publishedDate: result.publishedDate,
+            link: result.link
           })
-          paginateBooks(bookResults, 7)
+
+        if (index == 32) {
+          return false
         } else {
-					clearResults()
-					document.getElementById('search-results').innerHTML = '<p style="font-weight:bold; text-align:center;width:100%">Sorry, try again.</p>'
-          console.log(error)
+          return true
         }
-      })
+    })
+    paginateBooks(bookResults, 7)
     } else {
-			clearResults()
+      clearResults()
+      document.getElementById('search-results').innerHTML = '<p style="font-weight:bold; text-align:center;width:100%">Sorry, try again.</p>'
+      console.log(error)
+    }})
+    } else {
+      clearResults()
     }
   }
 }
