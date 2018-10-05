@@ -35,9 +35,9 @@ export default class extends Controller {
     return this.orderTarget.value
   }
 	
-	scrollTop() {
-	  $("html, body").animate({ scrollTop: $('.search__results').offset().top }, 100)
-	}
+  scrollTop() {
+    $("html, body").animate({ scrollTop: $('.search__results').offset().top }, 100)
+  }
 	
   sort() {
     if (this.order == 'Date') {
@@ -85,12 +85,12 @@ export default class extends Controller {
       }
     }
 
-		function clearResults() {
+    function clearResults() {
 			document.getElementById('search-results').innerHTML = ''
 			document.getElementsByClassName('search__results')[0].classList.add('hide')
 			document.getElementsByClassName('search')[0].classList.add('full-height')
 			document.getElementsByClassName('search__lookup')[0].classList.add('hide')
-		}
+    }
 		
 		function showResults() {
 			document.getElementsByClassName('search__results')[0].classList.remove('hide')
@@ -170,8 +170,7 @@ export default class extends Controller {
 			showResults()
 			addPageNumbers(pages)
     }
-
-				
+	
     if (this.input.length != 0) {
 			books.search(this.input, options, function(error, results) {
         if (!error) {
