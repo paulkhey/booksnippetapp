@@ -49,6 +49,7 @@ $(document).ready(function() {
       })
     })
   }
-
-  addBook()
+  window.onload = function() {
+    addBook()
+  }
 })
