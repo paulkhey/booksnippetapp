@@ -1,24 +1,26 @@
-# README
+# Book Snippet App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Note taking app for your books. Search for a book, add it to your list of books, then write snippet of notes about each book.
 
-Things you may want to cover:
+## Installation
+- `bundle install`
+- `yarn install`
+- `rails db:migrate`
+- `rails server`
 
-* Ruby version
+## Gems
+- `normalize-rails`
+- `webpacker`
+- `jquery-rails`
+- `momentjs-rails`
+- `will_paginate`
 
-* System dependencies
+## Packages
+- `google-books-search`
+- `stimulus`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Links
+### `develop` branch
+- https://booksnippetapp-staging.herokuapp.com/
+### `master` branch
+- https://booksnippetapp.herokuapp.com/
