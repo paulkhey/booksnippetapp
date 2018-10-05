@@ -47,7 +47,6 @@ export default class extends Controller {
     }
     this.list()
   }
-	
 
   next() {
     if (this.index == 0) {
@@ -56,7 +55,6 @@ export default class extends Controller {
     this.index++
     this.scrollTop()
   }
-
 
   previous() {
     this.index--
@@ -111,10 +109,10 @@ export default class extends Controller {
 		
 		function addPageNumbers(pages) {
       $('.search__set').append(`<div class="pagination">
-        <button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>
+				<button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>
         <div class="primary-btn page-number" aria-label="Current page"></div>
         <button class="primary-btn" data-action="search#next" aria-label="Next page">Next →</button>
-        </div>`)
+			</div>`)
 
       for (var n = 1; n <= pages; n++) {
         $('.search__set:nth-of-type(' + n + ') .pagination .page-number').append(n)
@@ -134,33 +132,32 @@ export default class extends Controller {
 			},[]))
 		}
 		
-    function paginateBooks(arr, size) {
-			clearResults()
+		function booksWithValues(result) {
+			return !(result.id == undefined || result.title == undefined || result.authors == undefined || result.thumbnail == undefined || result.pageCount == undefined || result.publishedDate == undefined || result.link == undefined)
+		}
 		
+    function paginateBooks(arr, size) {		
       var bookSets = []
 			var pages = Math.ceil(arr.length/size)
-			
+			clearResults()
 			sliceBooks(arr, pages, size, bookSets)
 
       bookSets.forEach(function(sets, index) {
-				
 				sets = uniqueBooks(sets)
-				
-        $('#search-results').append(`<div data-target="search.page" class="search__set page page-${index+1}"></div>`)
+				document.getElementById('search-results').innerHTML += `<div data-target="search.page" class="search__set page page-${index+1}"></div>`
 
-        for (var i = 0; i <= sets.length - 1; i ++) {
-					
-          $('.search__set:nth-of-type(' + (index + 1) + ')').append(`
+				sets.forEach(function(set) {
+          $('.search__set:nth-of-type(' + (index + 1)  + ')').append(`
             <li class="search__book">
               <div class="search__book--detail">
-                <a href="${sets[i].link}" target="_blank">
-                  <img class="search__image" src="${sets[i].thumbnail}" alt="${sets[i].title} cover">
+                <a href="${set.link}" target="_blank">
+                  <img class="search__image" src="${set.thumbnail}" alt="${set.title} cover">
                 </a>
                 <div class="search__info">
-                  <a href="${sets[i].link}" target="_blank"><p class="search__title">${sets[i].title}</p></a>
-                  <p class="search__author">by <span style="color: #003bcc; font-weight: bold">${sets[i].author}</span></p>
-                  <p class="search__date"><strong>Published:</strong> ${moment(sets[i].publishedDate, 'YYYY-MM-DD').format('MMMM D, YYYY')}</p>
-                  <p class="search__pages"><strong>Length:</strong> ${sets[i].pageCount} Pages</p>
+                  <a href="${set.link}" target="_blank"><p class="search__title">${set.title}</p></a>
+                  <p class="search__author">by <span style="color: #003bcc; font-weight: bold">${set.author}</span></p>
+                  <p class="search__date"><strong>Published:</strong> ${moment(set.publishedDate, 'YYYY-MM-DD').format('MMMM D, YYYY')}</p>
+                  <p class="search__pages"><strong>Length:</strong> ${set.pageCount} Pages</p>
                 </div>
               </div>
               <button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>
@@ -168,22 +165,17 @@ export default class extends Controller {
               <p class="search__book--warning hide" aria-label="Book warning" style="color: red">This book is already on your list.</p>
               <a href="/books" class="search__book--notice hide" aria-label="Book notice" style="color: #00b939">Go to your list of books!</a>
             </li>`)
-        }
+				})
       })
 			showResults()
 			addPageNumbers(pages)
     }
 
-		function booksWithValues(result) {
-			return !(result.id == undefined || result.title == undefined || result.authors == undefined || result.thumbnail == undefined || result.pageCount == undefined || result.publishedDate == undefined || result.link == undefined)
-		}
 				
     if (this.input.length != 0) {
-      books.search(this.input, options, function(error, results) {
+			books.search(this.input, options, function(error, results) {
         if (!error) {
-          results.filter(function(result) {
-            return booksWithValues(result)
-          }).every(function(result, index) {
+					results.filter((result) => booksWithValues(result)).every((result, index) => {
             bookResults.push({
 							id: result.id,
 							title: result.title,
@@ -194,7 +186,7 @@ export default class extends Controller {
 							link: result.link
 						})
 							
-            if (index == 34) {
+            if (index == 32) {
               return false
             } else {
               return true
