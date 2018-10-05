@@ -156,13 +156,33 @@ $hover-color: #003bcc;
   display: none;
 }
 
+.search__book--notice,
+.search__book--warning {
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+.search__book--notice.hide,
+.search__book--warning.hide {
+  display: none;
+}
+.search__book--notice {
+  text-decoration: none;
+}
+
+.search__book--notice:hover {
+  text-decoration: underline;
+}
+
 .search__book--action:hover {
   background: $hover-color;
 }
 
 .search__info {
   margin: 0 1.5em;
-  max-width: 620px;
+  max-width: 450px;
 }
 
 .search__title {
@@ -258,7 +278,9 @@ $hover-color: #003bcc;
   }
 
   .search__book--action,
-  .search__book--added {
+  .search__book--added,
+  .search__book--notice,
+  .search__book--warning {
     margin: 0.5em 0 1em;
   }
 }

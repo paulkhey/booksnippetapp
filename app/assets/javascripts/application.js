@@ -20,7 +20,7 @@
 $(document).ready(function() {
 
   function addBook() {
-    $('.search').on('click','.search__book--action', function() {
+    $('.search__results').on('click','.search__book--action', function() {
       var book = $(this).siblings('.search__book--detail')
       var bookinfo = book.children('.search__info')
       var title = bookinfo.children('a').children('.search__title').html()
@@ -31,17 +31,23 @@ $(document).ready(function() {
       console.log(author)
       console.log(image)
       console.log(link)
-      $(this).addClass('hide')
-      $(this).siblings('.search__book--added').removeClass('hide')
 
+      const context = $(this)
 
       $.ajax({
         type: 'POST',
         url: '/books',
         data: { book: { title: title, author: author, cover: image, link: link}},
         success: function(data) {
-          console.log('Success')
-          console.log(data)
+          if (typeof(data) == 'object') {
+            context.addClass('hide')
+            context.siblings('.search__book--notice').removeClass('hide')
+            context.siblings('.search__book--added').removeClass('hide')
+            console.log('Added Book!')
+          } else {
+            context.siblings('.search__book--warning').removeClass('hide')
+            console.log('Sorry, you already have this on your list.')
+          }
         },
         error: function() {
           console.log('failed!')
@@ -49,7 +55,6 @@ $(document).ready(function() {
       })
     })
   }
-  window.onload = function() {
-    addBook()
-  }
+
+  addBook()
 })

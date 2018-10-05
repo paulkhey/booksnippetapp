@@ -137,7 +137,9 @@ export default class extends Controller {
                       </div>
                     </div>
                     <button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>
-                    <div class="search__book--added primary-btn secondary-btn hide" aria-label="Book added">Book Added!</div>
+                    <div class="search__book--added primary-btn secondary-btn hide" style="cursor: initial" aria-label="Book added">Book Added!</div>
+                    <p class="search__book--warning hide" aria-label="Book warning" style="color: red">This book is already on your list.</p>
+                    <a href="/books" class="search__book--notice hide" aria-label="Book notice" style="color: #00b939">Go to your list of books!</a>
                   </li>`)
               }
             })
