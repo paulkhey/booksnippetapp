@@ -46,6 +46,8 @@ $(document).ready(function() {
         console.log('Sorry, you already have this on your list.')
       }},
       error: function() {
+      context.siblings('.search__book--warning').html('Sorry, something went wrong.')
+      context.siblings('.search__book--warning').removeClass('hide')
       console.log('failed!')
       }
     })
