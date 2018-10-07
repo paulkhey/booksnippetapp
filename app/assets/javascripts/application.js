@@ -62,8 +62,8 @@ $(document).ready(function() {
   }
 
   function changePagination() {
-    $('.pagination .previous_page').addClass('primary-btn').css('padding-right',0)
-    $('.pagination .next_page').addClass('primary-btn').css('padding-left',0)
+    $('.pagination .previous_page').addClass('primary-btn prev-btn')
+    $('.pagination .next_page').addClass('primary-btn next-btn')
     $('em.current').addClass('primary-btn')
 
 
@@ -74,11 +74,11 @@ $(document).ready(function() {
   function delayPagination() {
     setTimeout(function() {
       changePagination()
-    }, 300)
+    }, 100)
 
     setTimeout(function() {
       changePagination()
-    }, 600)
+    }, 300)
   }
 
   $('html').on('click','a', function() {

@@ -266,16 +266,16 @@ $hover-color: #003bcc;
 .pagination .primary-btn span {
   position: absolute;
   font-size: 1.6em;
-  top: 6px;
+  top: 0.2em;
   opacity: .2;
 }
 
 .pagination .primary-btn span.next {
-  right: -24px;
+  right: 0;
 }
 
 .pagination .primary-btn span.prev {
-  left: -24px;
+  left: 0;
 }
 
 
@@ -286,6 +286,24 @@ $hover-color: #003bcc;
 .pagination button.hide {
   visibility: hidden;
 }
+
+
+.pagination .next-btn {
+  padding: .7em 2.2em .7em .7em;
+  margin-left: 1em;
+}
+
+.pagination .prev-btn {
+  padding: .7em .7em .7em 2.2em;
+  margin-right: 1em;
+}
+
+.pagination .next-btn:hover,
+.pagination .prev-btn:hover {
+  opacity: .85;
+}
+
+
 
 %paginate-btn {
 	font-style: normal;
