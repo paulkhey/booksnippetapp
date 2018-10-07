@@ -18,7 +18,6 @@
 //= require_tree .
 
 $(document).ready(function() {
-  console.log(1)
   $('html').on('click','.search__book--action', function() {
     var book = $(this).siblings('.search__book--detail')
     var bookinfo = book.children('.search__info')
@@ -71,18 +70,13 @@ $(document).ready(function() {
     $('.pagination .next_page').html('Next <span class="next">→</span>')
   }
 
-  function delayPagination() {
-    setTimeout(function() {
-      changePagination()
-    }, 100)
+  function delayPagination(l) {
 
-    setTimeout(function() {
-      changePagination()
-    }, 500)
-
-    setTimeout(function() {
-      changePagination()
-    }, 1000)
+    for (var i = 0; i <= l;i = i + 200) {
+      setTimeout(function() {
+        changePagination()
+      }, i)
+    }
   }
 
   $('html').on('click','a', function() {
@@ -92,7 +86,7 @@ $(document).ready(function() {
     }
     // when /books.. is clicked and current window is not /books then replace pagination
     if ($(this).attr('href') == '/books' && window.location.pathname.slice(0,7) !== '/books') {
-      delayPagination()
+      delayPagination(1500)
     }
   })
 
@@ -102,11 +96,10 @@ $(document).ready(function() {
       changePagination()
     }
   }
-
   // changes when user hits prev or next
   $('html').on('click','.pagination a', function() {
     if (window.location.pathname.slice(0,7) == '/books') {
-      delayPagination()
+      delayPagination(1000)
     }
   })
 })
