@@ -18,6 +18,7 @@
 //= require_tree .
 
 $(document).ready(function() {
+  console.log(1)
   $('html').on('click','.search__book--action', function() {
     var book = $(this).siblings('.search__book--detail')
     var bookinfo = book.children('.search__info')
@@ -60,10 +61,47 @@ $(document).ready(function() {
     document.getElementsByClassName('search__lookup')[0].classList.add('hide')
   }
 
-  // refactor: be more specific once navigation is added. select anchor and class
+  function changePagination() {
+    $('.pagination .previous_page').addClass('primary-btn').css('padding-right',0)
+    $('.pagination .next_page').addClass('primary-btn').css('padding-left',0)
+    $('em.current').addClass('primary-btn')
+
+
+    $('.pagination .previous_page').html('<span class="prev">←</span> Prev')
+    $('.pagination .next_page').html('Next <span class="next">→</span>')
+  }
+
+  function delayPagination() {
+    setTimeout(function() {
+      changePagination()
+    }, 300)
+
+    setTimeout(function() {
+      changePagination()
+    }, 600)
+  }
+
   $('html').on('click','a', function() {
-    if ($(this).html() != 'Search' && window.location.pathname == '/search') {
+    // clear search results when clicking links that are not search and if coming out of search
+    if ($(this).attr('href') != '/search' && window.location.pathname == '/search') {
       clearResults()
+    }
+    // when /books.. is clicked and current window is not /books then replace pagination
+    if ($(this).attr('href') == '/books' && window.location.pathname.slice(0,7) !== '/books') {
+      delayPagination()
+    }
+  })
+
+  // changes pagination on refresh
+  window.onload = function() {
+    if (window.location.pathname.slice(0,7) == '/books') {
+      changePagination()
+    }
+  }
+
+  $('html').on('click','.pagination a', function() {
+    if (window.location.pathname.slice(0,7) == '/books') {
+      delayPagination()
     }
   })
 })

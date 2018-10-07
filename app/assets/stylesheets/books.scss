@@ -8,22 +8,31 @@ $hover-color: #003bcc;
 .primary-btn {
   border: 0;
   cursor: pointer;
+  font-weight: bold;
+
   background: $button-color;
   color: #fff;
   padding: 0.6em 0.8em;
   border-radius: 0;
-  font-weight: bold;
+
+  padding: 0.7em 0.9em;
+  background: transparent;
+  color: $button-color;
+  border: 2px solid $button-color;
+  border-radius: 2px;
 }
 
 .primary-btn:hover {
-  background: $hover-color;
+  background: $button-color;
+  color: #fff;
 }
 
-.secondary-btn {
+.success-btn {
   background: $success-color;
+
 }
 
-.secondary-btn:hover {
+.success-btn:hover {
   background: $success-color;
 }
 
@@ -86,6 +95,7 @@ $hover-color: #003bcc;
   font-weight: bold;
   padding: 0.4em 0.5em 0 .5em;
   height: 100%;
+  border-radius: 0;
 }
 
 
@@ -146,6 +156,12 @@ $hover-color: #003bcc;
 
 .search__book--action.hide {
   display: none;
+}
+
+.search__book--added {
+  cursor: initial;
+  color: #fff;
+  border: 2px solid $success-color;
 }
 
 .search__book--added.hide {
@@ -239,12 +255,32 @@ $hover-color: #003bcc;
 
 .pagination .primary-btn {
   font-weight: bold;
-  margin: 0 .5em;
-  background: $main-color;
+  background: transparent;
+  border: 2px solid transparent;
+  color: #000;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  position: relative;
 }
 
+.pagination .primary-btn span {
+  position: absolute;
+  font-size: 1.6em;
+  top: 6px;
+  opacity: .2;
+}
+
+.pagination .primary-btn span.next {
+  right: -24px;
+}
+
+.pagination .primary-btn span.prev {
+  left: -24px;
+}
+
+
 .pagination button:hover {
-  background: $main-hover;
+  background: transparent;
 }
 
 .pagination button.hide {

@@ -109,9 +109,9 @@ export default class extends Controller {
 
     function addPageNumbers(pages) {
       $('.search__set').append(`<div class="pagination">
-      <button class="primary-btn" data-action="search#previous" aria-label="Previous page">← Prev</button>
+      <button class="primary-btn" data-action="search#previous" aria-label="Previous page"><span class="prev">←</span> Prev</button>
       <div class="primary-btn page-number" aria-label="Current page"></div>
-      <button class="primary-btn" data-action="search#next" aria-label="Next page">Next →</button>
+      <button class="primary-btn" data-action="search#next" aria-label="Next page">Next <span class="next">→</span></button>
       </div>`)
 
       for (var n = 1; n <= pages; n++) {
@@ -159,7 +159,7 @@ export default class extends Controller {
               </div>
             </div>
             <button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>
-            <div class="search__book--added primary-btn secondary-btn hide" style="cursor: initial" aria-label="Book added">Added!</div>
+            <div class="search__book--added primary-btn success-btn hide" aria-label="Book added">Added!</div>
             <p class="search__book--warning hide" aria-label="Book warning" style="color: red">This book is already on your list.</p>
             <a href="/books" class="search__book--notice hide" aria-label="Book notice" style="color: #00b939">Go to your list of books!</a>
           </li>`)
