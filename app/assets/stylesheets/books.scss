@@ -90,7 +90,7 @@ $hover-color: #003bcc;
 .search__bar button {
   cursor: pointer;
   color: #fff;
-  background: $main-color;
+  background: transparent;
   border: 1px solid $main-color;
   font-weight: bold;
   padding: 0.4em 0.5em 0 .5em;
@@ -100,7 +100,7 @@ $hover-color: #003bcc;
 
 
 .search__bar button:hover {
-  background: $main-hover;
+  background: transparent;
 }
 
 .search__bar button img {
