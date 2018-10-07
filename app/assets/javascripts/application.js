@@ -78,11 +78,11 @@ $(document).ready(function() {
 
     setTimeout(function() {
       changePagination()
-    }, 200)
+    }, 500)
 
     setTimeout(function() {
       changePagination()
-    }, 500)
+    }, 1000)
   }
 
   $('html').on('click','a', function() {
@@ -103,6 +103,7 @@ $(document).ready(function() {
     }
   }
 
+  // changes when user hits prev or next
   $('html').on('click','.pagination a', function() {
     if (window.location.pathname.slice(0,7) == '/books') {
       delayPagination()

@@ -285,6 +285,7 @@ $hover-color: #003bcc;
 
 .pagination button.hide {
   visibility: hidden;
+  display: none;
 }
 
 
@@ -318,6 +319,7 @@ $hover-color: #003bcc;
 .previous_page.disabled,
 .next_page.disabled {
 	visibility: hidden;
+  display: none;
 }
 
 .pagination a {
