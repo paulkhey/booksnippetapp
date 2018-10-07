@@ -261,6 +261,7 @@ $hover-color: #003bcc;
   font-size: 1.1em;
   text-transform: uppercase;
   position: relative;
+  display: block;
 }
 
 .pagination .primary-btn span {
@@ -292,11 +293,13 @@ $hover-color: #003bcc;
 .pagination .next-btn {
   padding: .7em 2.2em .7em .7em;
   margin-left: 1em;
+  display: block;
 }
 
 .pagination .prev-btn {
   padding: .7em .7em .7em 2.2em;
   margin-right: 1em;
+  display: block;
 }
 
 .pagination .next-btn:hover,
@@ -335,8 +338,8 @@ a.previous_page,
 .previous_page.disabled,
 .next_page.disabled,
 a.next_page {
-	display: block;
 	text-decoration: none;
+  display: none;
 	@extend %paginate-btn;
 }
 
@@ -350,6 +353,7 @@ a.next_page {
 
 .current {
 	cursor: initial;
+  display: none;
 	@extend %paginate-btn;
 }
 
