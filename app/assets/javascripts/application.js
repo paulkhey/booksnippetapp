@@ -78,7 +78,11 @@ $(document).ready(function() {
 
     setTimeout(function() {
       changePagination()
-    }, 300)
+    }, 200)
+
+    setTimeout(function() {
+      changePagination()
+    }, 500)
   }
 
   $('html').on('click','a', function() {
