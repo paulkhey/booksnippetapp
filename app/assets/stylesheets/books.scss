@@ -24,7 +24,6 @@ $hover-color: #003bcc;
 
 .success-btn {
   background: $success-color;
-
 }
 
 .success-btn:hover {
@@ -55,6 +54,7 @@ nav {
   padding: 0 .7em;
   height: 75px;
   position: relative;
+  background: #fff;
 }
 
 .nav-items {
@@ -143,6 +143,14 @@ nav {
   padding: 0 .7em;
 }
 
+.search.full-height{
+  height: calc(100vh - (75px + 8em));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .search__bar {
   text-align: center;
   padding-top: 3em;
@@ -202,7 +210,6 @@ nav {
   border-radius: 0;
 }
 
-
 .search__bar button:hover {
   background: transparent;
 }
@@ -220,7 +227,6 @@ nav {
 .search__results.hide {
   display: none;
 }
-
 
 .search__lookup p {
   text-align: center;
@@ -503,7 +509,6 @@ p#notice {
     transition: all .15s ease-in-out;
   }
   
-
   .nav-items.open {
     z-index: 777;
     opacity: 1;
