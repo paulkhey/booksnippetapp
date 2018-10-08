@@ -64,6 +64,10 @@ nav {
   display: flex;
 }
 
+.nav-items a {
+  padding: .7em .9em;
+}
+
 .nav-items li {
   list-style-type: none;
   text-transform: uppercase;
@@ -71,7 +75,7 @@ nav {
   border: 0;
   cursor: pointer;
   color: #fff;
-  padding: 0.7em 0.9em;
+  padding: .7em 0;
   background: transparent;
   border: 2px solid transparent;
 }
@@ -88,8 +92,7 @@ nav {
 }
 
 .nav-items li a:hover {
-  border-bottom: 2px solid #0045fe;
-  padding-bottom: 1px;
+  text-decoration: underline;
 }
 
 .nav-items li.sign-in a {
