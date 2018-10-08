@@ -60,7 +60,7 @@ $(document).ready(function() {
   })
 
   function clearResults() {
-    document.getElementById('no-search').innerHTML = ''
+    document.getElementById('no-search').classList.add('hide')
     document.getElementById('search-results').innerHTML = ''
     document.getElementsByClassName('search__results')[0].classList.add('hide')
     document.getElementsByClassName('search')[0].classList.add('full-height')
