@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 <section class="books">
-  <% @mybooks.length %>
+  <% if @mybooks.length == 1 %>
+    <p class="total-books">You have <%= @mybooks.length %> book.</p>
+  <% else %>
+    <p class="total-books">You have <%= @mybooks.length %> books.</p>    
+  <% end %>
   <ul style="padding: 0">
   <% @mybooks.each do |book| %>
     <li class="books__unit">
