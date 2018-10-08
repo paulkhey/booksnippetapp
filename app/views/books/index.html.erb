@@ -1,18 +1,23 @@
 <p id="notice"><%= notice %></p>
 <section class="books">
+  <!-- you have a total of10 books -->
+  <ul style="padding: 0">
   <% @mybooks.each do |book| %>
-    <div class="books__unit">
+    <li class="books__unit">
       <div class="books__detail">
         <img class="books__image" src="<%= book.cover %>" alt="<%= book.title %>">
-        <p class="books__title"><%= book.title %></p>
-        <p class="books__author"><%= book.author %></p>
+        <div class="books__info">
+          <%= link_to book.title, book, class: 'books__title' %>
+          <p class="books__author">by <span style="color: #003bcc; font-weight: bold"><%= book.author %></span></p>
+        </div>
       </div>
-      <div>
-        <%= link_to 'Show', book %>
-        <%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <div class="books__action">
+        <%= link_to 'Show', book, class: 'primary-btn show' %>
+        <%= link_to 'Delete', book, class: 'primary-btn delete', method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
-    </div>
+    </li>
   <% end %>
+  </ul>
 	<% if @mybooks.empty? %>
   <div id="no-books">
 		<p>View to render when no books are found.</p>
