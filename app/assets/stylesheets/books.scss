@@ -31,9 +31,116 @@ $hover-color: #003bcc;
   background: $success-color;
 }
 
+header a {
+  text-decoration: none;
+  color: #084efa;
+  font-weight: 900;
+}
+
+header a:hover {
+  text-decoration: none;
+}
+
+#logo {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+nav {
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding: 0 .7em;
+  height: 75px;
+  position: relative;
+}
+
+.nav-items {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-items li {
+  list-style-type: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  padding: 0.7em 0.9em;
+  background: transparent;
+  border: 2px solid transparent;
+}
+
+.nav-items li.sign-in {
+  border: 2px solid #084efa;
+  background: #084efa;
+}
+
+.nav-items li.sign-in:hover {
+  background: #003bcc;
+  border: 2px solid #003bcc;
+  text-decoration: none;
+}
+
+.nav-items li a:hover {
+  border-bottom: 2px solid #0045fe;
+  padding-bottom: 1px;
+}
+
+.nav-items li.sign-in a {
+  color: #fff;
+  border: 0;
+}
+
+.nav-items li.sign-in {
+  margin-left: .5em;
+}
+
+.hamburger {
+  border: 0;
+  padding: 0.5em;
+  cursor: pointer;
+  display: none;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.hamburger span {
+  display: block;
+  width: 30px;
+  height: 5px;
+  border-radius: 1px;
+  background-color: $button-color;
+  transition: all .25s ease-in-out;
+  margin: 5px auto 0;
+}
+
+.hamburger.open span {
+  position: absolute;
+  left: 10px;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(225deg);
+  top: 22px;
+}
+
+.hamburger.open span:nth-child(2),
+.hamburger.open span:nth-child(3) {
+  transform: rotate(135deg);
+  top: 22px;
+  margin-top: 0;
+}
+
+
 // search
 .search {
-  padding: 0 .5em;
+  padding: 0 .7em;
 }
 
 .search__bar {
@@ -107,7 +214,7 @@ $hover-color: #003bcc;
 .search__results {
   max-width: 900px;
   margin: auto;
-  padding: 0 .5em;
+  padding: 0 .7em;
 }
 
 .search__results.hide {
@@ -211,6 +318,7 @@ $hover-color: #003bcc;
 .search__author {
   font-size: 1em;
   margin-top: 0;
+  margin-bottom: 1.2em;
 }
 
 .search__pages {
@@ -307,13 +415,13 @@ $hover-color: #003bcc;
 
 .pagination .next-btn {
   padding: .7em 2.2em .7em .7em;
-  margin-left: 1em;
+  margin-left: .7em;
   display: block;
 }
 
 .pagination .prev-btn {
   padding: .7em .7em .7em 2.2em;
-  margin-right: 1em;
+  margin-right: .7em;
   display: block;
 }
 
@@ -378,6 +486,56 @@ p#notice {
 
 @media (max-width: 768px) {
 
+  .hamburger {
+    display: block;
+  }
+  
+  .nav-items {
+    text-align: center;
+    flex-direction: column;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .15s ease-in-out;
+  }
+  
+
+  .nav-items.open {
+    z-index: 777;
+    opacity: 1;
+    visibility: initial;
+    padding: 1em 0 1em;
+    border-bottom: 1px solid #ececec;
+  }
+  
+  .nav-items li.sign-in a {
+    color: $button-color;
+  }
+  
+  .nav-items li.sign-in {
+    border: 2px solid transparent;
+    background: transparent;
+  }
+  
+  .nav-items li.sign-in:hover {
+    background: transparent;
+    border: 2px solid transparent;
+    text-decoration: none;
+  }
+  
+  .nav-items li.sign-in a:hover {
+    border-bottom: 2px solid #0045fe;
+    padding-bottom: 1px; 
+  }
+  
+  .nav-items li.sign-in {
+    margin-left: 0;
+  }
+
   .search__book {
     flex-direction: column;
     padding: 2.5em 0 0.8em;
@@ -394,7 +552,7 @@ p#notice {
 
   .search__image {
     max-width: 150px;
-    margin-bottom: .5em;
+    margin-bottom: .7em;
   }
 
   .search__book--detail {
