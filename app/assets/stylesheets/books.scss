@@ -431,7 +431,33 @@ nav {
   padding: 0 .5em;
 }
 
+// temp styles
+.book__unit {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
+.book__title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 0.4em;
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+}
+
+.book__detail {
+  margin-top: 1.5em;
+}
+
+.book__author {
+  margin: 0;
+  font-size: 1.2em;
+}
 
 
 // pagination

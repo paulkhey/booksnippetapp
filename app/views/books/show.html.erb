@@ -1,10 +1,19 @@
+<style>
+.soon {
+  text-align: center;
+  font-weight: bold;
+  opacity: .3;
+  margin-top: 3em;
+  font-size: 1.5em;
+}
+</style>
 <p id="notice"><%= notice %></p>
 <section class="book">
   <div class="book__unit">
-    <img class="book__image" src="<%= @book.cover %>" alt="<%= @book.title %>">
     <div class="book__detail">
       <p class="book__title"><%= @book.title %></p>
-      <p class="book_author"><%= @book.author %></p>
+      <p class="book__author">by <span style="color: #003bcc; font-weight: bold"><%= @book.author %></span></p>
     </div>
   </div>  
+  <p class="soon">Notes feature coming soon.</p>
 </section>
