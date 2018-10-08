@@ -61,7 +61,7 @@ $(document).ready(function() {
 
   function clearResults() {
     document.getElementById('no-search').classList.remove('hide')
-    document.getElementById('search-results').classList.add('hide')
+    document.getElementById('search-results').classList.remove('hide')
     document.getElementById('search-results').innerHTML = ''
     document.getElementsByClassName('search__results')[0].classList.add('hide')
     document.getElementsByClassName('search__lookup')[0].classList.add('hide')

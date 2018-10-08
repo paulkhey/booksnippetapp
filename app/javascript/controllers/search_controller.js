@@ -86,7 +86,7 @@ export default class extends Controller {
     }
 
     function clearResults() {
-      // document.getElementsByClassName('search')[0].classList.add('full-height')
+      document.getElementsByClassName('search')[0].classList.add('full-height')
       document.getElementById('no-search').classList.remove('hide')
       document.getElementById('search-results').classList.add('hide')
       document.getElementById('search-results').innerHTML = ''
