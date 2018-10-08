@@ -1,15 +1,23 @@
 <p id="notice"><%= notice %></p>
 <section class="books">
   <% @mybooks.each do |book| %>
-    <p class="books__title"><%= book.title %></p>
-    <p class="books__author"><%= book.author %></p>
-    <img class="books__image" src="<%= book.cover %>" alt="<%= book.title %>">
-      <%= link_to 'Show', book %>
-      <%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <div class="books__unit">
+      <div class="books__detail">
+        <img class="books__image" src="<%= book.cover %>" alt="<%= book.title %>">
+        <p class="books__title"><%= book.title %></p>
+        <p class="books__author"><%= book.author %></p>
+      </div>
+      <div>
+        <%= link_to 'Show', book %>
+        <%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
   <% end %>
 	<% if @mybooks.empty? %>
+  <div id="no-books">
 		<p>View to render when no books are found.</p>
 		<a href="/search">Add some books!</a>
+  </div>
 	<% end %>
 </section>
 <%= will_paginate @mybooks %>

@@ -12,10 +12,23 @@
   </head>
 
   <body>
-    <% request.original_fullpath %>
-    <a href="/">Home</a>
-    <a href="/books">Books</a>
-    <a href="/search">Search</a>
+    <header>
+      <nav>
+        <div id="logo">
+          <%= link_to "BookSnippetApp", '/' %>
+        </div>
+        <ul class="nav-items">
+          <li><a aria-label="Go to my books" href="/books">My Books</a></li>
+          <li><a aria-label="Search for books" href="/search">Search</a></li>
+          <% if true %>
+            <li class="sign"><a aria-label="Sign in" href="#">Sign in</a></li>
+          <% else %>
+            <li class="sign"><a aria-label="Sign in" href="#">Sign out</a></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+
     <%= yield %>
   </body>
 </html>

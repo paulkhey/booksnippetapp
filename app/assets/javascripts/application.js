@@ -54,6 +54,7 @@ $(document).ready(function() {
   })
 
   function clearResults() {
+    document.getElementById('no-search').innerHTML = ''
     document.getElementById('search-results').innerHTML = ''
     document.getElementsByClassName('search__results')[0].classList.add('hide')
     document.getElementsByClassName('search')[0].classList.add('full-height')
@@ -79,7 +80,7 @@ $(document).ready(function() {
     }
   }
 
-  $('html').on('click','a', function() {
+  $('html').on('click','nav a', function() {
     // clear search results when clicking links that are not search and if coming out of search
     if ($(this).attr('href') != '/search' && window.location.pathname == '/search') {
       clearResults()

@@ -1,18 +1,10 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
-
-<p>
-  <strong>Cover:</strong>
-  <img src="<%= @book.cover %>" alt="<%= @book.title %>">
-</p>
-<%= link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', books_path %>
+<section class="book">
+  <div class="book__unit">
+    <img class="book__image" src="<%= @book.cover %>" alt="<%= @book.title %>">
+    <div class="book__detail">
+      <p class="book__title"><%= @book.title %></p>
+      <p class="book_author"><%= @book.author %></p>
+    </div>
+  </div>  
+</section>

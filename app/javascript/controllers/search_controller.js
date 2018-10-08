@@ -86,15 +86,15 @@ export default class extends Controller {
     }
 
     function clearResults() {
+      document.getElementById('no-search').innerHTML = '<p>Find your favorite books and write snippets.</p>'
       document.getElementById('search-results').innerHTML = ''
       document.getElementsByClassName('search__results')[0].classList.add('hide')
-      document.getElementsByClassName('search')[0].classList.add('full-height')
       document.getElementsByClassName('search__lookup')[0].classList.add('hide')
     }
 
     function showResults() {
+      document.getElementById('no-search').innerHTML = ''
       document.getElementsByClassName('search__results')[0].classList.remove('hide')
-      document.getElementsByClassName('search')[0].classList.remove('full-height')
       document.getElementsByClassName('search__lookup')[0].classList.remove('hide')
     }
 
