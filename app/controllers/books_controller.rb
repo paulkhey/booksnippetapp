@@ -5,7 +5,10 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     # @mybooks = Book.all
-    @mybooks = Book.paginate(:page => params[:page], :per_page => 7).order('created_at DESC')
+    @mybooks = Book.paginate(:page => params[:page], :per_page => 7)
+    newest = 'created_at DESC'
+    alphabetical = 'title ASC'
+    @mybooks =  @mybooks.order(newest)
   end
 
   # GET /books/1
