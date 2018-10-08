@@ -99,6 +99,10 @@ nav {
   border: 0;
 }
 
+.nav-items li.sign-in a:hover {
+  text-decoration: none;
+}
+
 .nav-items li.sign-in {
   margin-left: .5em;
 }
@@ -641,16 +645,14 @@ p#notice {
   .nav-items li.sign-in {
     border: 2px solid transparent;
     background: transparent;
+    text-decoration: none;
+    margin-left: 0;
   }
   
   .nav-items li.sign-in:hover {
     background: transparent;
     border: 2px solid transparent;
-    text-decoration: none;
-  }
-  
-  .nav-items li.sign-in {
-    margin-left: 0;
+    text-decoration: underline;
   }
 
   .search__book {
