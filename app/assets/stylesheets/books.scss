@@ -143,13 +143,14 @@ nav {
   padding: 0 .7em;
 }
 
-.search.full-height{
-  height: calc(100vh - (75px + 8em));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+//.search.full-height{
+//  height: calc(100vh - (75px + 8em));
+//  height: 60vh;
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  flex-direction: column;
+//}
 
 .search__bar {
   text-align: center;
