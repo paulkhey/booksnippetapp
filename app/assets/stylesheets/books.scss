@@ -347,10 +347,17 @@ nav {
 }
 
 // books
+
+#no-books {
+  text-align: center;
+  margin-top: 3em;
+}
+
 .books {
   max-width: 900px;
   margin: auto;
   padding: 0 .5em;
+  margin-top: 3em;
 }
 
 .books__unit {
@@ -366,6 +373,7 @@ nav {
 
 .books__unit:first-child {
   border: 0;
+  padding-top: 0;
 }
 
 .books__detail {
@@ -429,6 +437,7 @@ nav {
   max-width: 900px;
   margin: auto;
   padding: 0 .5em;
+  margin-top: 3em;
 }
 
 // temp styles
@@ -442,7 +451,7 @@ nav {
 
 .book__title {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1.8em;
   margin-top: 0;
   margin-bottom: 0.4em;
   display: inline-block;
@@ -450,13 +459,9 @@ nav {
   text-decoration: none;
 }
 
-.book__detail {
-  margin-top: 1.5em;
-}
-
 .book__author {
   margin: 0;
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
 

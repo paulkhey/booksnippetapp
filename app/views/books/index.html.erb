@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <section class="books">
-  <!-- you have a total of10 books -->
+  <% @mybooks.length %>
   <ul style="padding: 0">
   <% @mybooks.each do |book| %>
     <li class="books__unit">
@@ -20,8 +20,10 @@
   </ul>
 	<% if @mybooks.empty? %>
   <div id="no-books">
-		<p>View to render when no books are found.</p>
-		<a href="/search">Add some books!</a>
+		<p style="font-weight: bold; font-size: 1.3em">You have no books.</p>
+		<a href="/search">
+      <button class="primary-btn" type="button">Add some books!</button>
+    </a>
   </div>
 	<% end %>
 </section>
