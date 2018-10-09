@@ -152,6 +152,7 @@ nav {
 
 .search.top {
   margin-top: 5em;
+  padding-bottom: 5em;
 }
 
 .search__bar {
@@ -186,7 +187,7 @@ nav {
 }
 
 #no-search p {
-  padding: 1em .5em;
+  padding: 1em .5em 0;
 }
 
 .search__sort {
@@ -497,7 +498,7 @@ nav {
 .pagination {
   display: flex;
   justify-content: center;
-  margin-bottom: 3em;
+  padding-bottom: 4.5em;
 }
 
 .page-number {
@@ -613,7 +614,10 @@ p#notice {
 footer {
   text-align: center;
   background: #fff;
-  display: none;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 0.5em 0;
 }
 
 footer a {
