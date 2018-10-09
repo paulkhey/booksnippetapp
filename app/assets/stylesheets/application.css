@@ -24,10 +24,6 @@ body {
   /*outline-color: #084efa;*/
 }
 
-h1 {
-  font-size: 3em;
-}
-
 input {
   border-radius: 0;
   -webkit-appearance: none;

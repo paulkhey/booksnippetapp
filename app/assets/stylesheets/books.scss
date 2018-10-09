@@ -151,20 +151,15 @@ nav {
   padding: 0 .7em;
 }
 
-//.search.full-height{
-//  height: calc(100vh - (75px + 10em));
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//  flex-direction: column;
-//}
+.search.top {
+  margin-top: 5em;
+}
 
 .search__bar {
   text-align: center;
-  padding-top: 2em;
   max-width: 600px;
   width: 100%;
-  margin: auto;
+  margin: 1.5em auto 0;
 }
 
 .search__bar form {
@@ -185,7 +180,6 @@ nav {
 
 #no-search {
   text-align: center;
-  font-weight: bold;
 }
 
 #no-search.hide {
@@ -202,6 +196,7 @@ nav {
 
 .search__bar h1 {
   margin-top: 0;
+  font-size: 2.5em;
 }
 
 .search__bar input {
@@ -357,7 +352,13 @@ nav {
 
 #no-books {
   text-align: center;
-  margin-top: 3em;
+  margin-top: 5em;
+}
+
+#no-books p {
+  font-weight: bold;
+  font-size: 1.6em;
+  margin-top: 0;
 }
 
 .total-books {
@@ -612,7 +613,16 @@ p#notice {
 }
 
 footer {
-  display: none;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+}
+
+footer a {
+  color: $button-color;
 }
 
 @media (max-width: 768px) {

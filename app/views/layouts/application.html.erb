@@ -41,7 +41,11 @@
     </header>
     <%= yield %>
     <footer>
-      <p>Project made by <a href="https://twitter.com/pkayokay">pkayokay</a> © <span id="year"></span></p>
+      <p>Project by <a target="_blank" href="https://twitter.com/pkayokay">pkayokay</a> © <span id="year"></span></p>
     </footer>
+    <script>
+      var year = new Date().getFullYear()
+      document.getElementById('year').innerHTML = year
+    </script>
   </body>
 </html>
