@@ -18,12 +18,18 @@
           <%= link_to "BookSnippetApp", '/' %>
         </div>
         <ul class="nav-items">
+          <% if false %>
           <li><a aria-label="Go to my books" href="/books">My Books</a></li>
           <li><a aria-label="Search for books" href="/search">Search</a></li>
-          <% if true %>
-            <li class="sign-in"><a aria-label="Sign in" href="/sign-in">Sign in</a></li>
+          <li><a aria-label="Log out" href="#">Log out</a></li>
+          <% elsif false %>
+          <li><a aria-label="Log in" href="/log-in">Log in</a></li>
+          <li class="sign-up"><a aria-label="Sign up" href="/log-in">Sign up</a></li>
           <% else %>
-            <li class="sign"><a aria-label="Sign in" href="/">Sign out</a></li>
+          <li><a aria-label="Go to my books" href="/books">My Books</a></li>
+          <li><a aria-label="Search for books" href="/search">Search</a></li>
+          <li><a aria-label="Log in" href="/log-in">Log in</a></li>
+          <li class="sign-up"><a aria-label="Sign up" href="/log-in">Sign up</a></li>
           <% end %>
         </ul>
         <button type="button" class="hamburger">
@@ -33,7 +39,9 @@
         </button>
       </nav>
     </header>
-
     <%= yield %>
+    <footer>
+      <p>Project made by <a href="https://twitter.com/pkayokay">pkayokay</a> © <span id="year"></span></p>
+    </footer>
   </body>
 </html>

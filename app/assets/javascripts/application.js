@@ -19,6 +19,10 @@
 
 $(document).ready(function() {
   
+  // footer year
+  var year = new Date().getFullYear()
+  document.getElementById('year').innerHTML = year
+  
   $('html').on('click','button.hamburger', function() {
     $('.nav-items').toggleClass('open')
     $('.hamburger').toggleClass('open')

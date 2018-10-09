@@ -79,12 +79,12 @@ nav {
   border: 2px solid transparent;
 }
 
-.nav-items li.sign-in {
+.nav-items li.sign-up {
   border: 2px solid #084efa;
   background: #084efa;
 }
 
-.nav-items li.sign-in:hover {
+.nav-items li.sign-up:hover {
   background: #003bcc;
   border: 2px solid #003bcc;
   text-decoration: none;
@@ -94,16 +94,16 @@ nav {
   text-decoration: underline;
 }
 
-.nav-items li.sign-in a {
+.nav-items li.sign-up a {
   color: #fff;
   border: 0;
 }
 
-.nav-items li.sign-in a:hover {
+.nav-items li.sign-up a:hover {
   text-decoration: none;
 }
 
-.nav-items li.sign-in {
+.nav-items li.sign-up {
   margin-left: .5em;
 }
 
@@ -611,6 +611,10 @@ p#notice {
   color: red;
 }
 
+footer {
+  display: none;
+}
+
 @media (max-width: 768px) {
 
   .hamburger {
@@ -638,18 +642,18 @@ p#notice {
     border-bottom: 1px solid #ececec;
   }
   
-  .nav-items li.sign-in a {
+  .nav-items li.sign-up a {
     color: $button-color;
   }
   
-  .nav-items li.sign-in {
+  .nav-items li.sign-up {
     border: 2px solid transparent;
     background: transparent;
     text-decoration: none;
     margin-left: 0;
   }
   
-  .nav-items li.sign-in:hover {
+  .nav-items li.sign-up:hover {
     background: transparent;
     border: 2px solid transparent;
     text-decoration: underline;
