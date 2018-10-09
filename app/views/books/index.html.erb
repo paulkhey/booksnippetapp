@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 <section class="books">
   <% if @mybooks.length == 1 %>
-    <p class="total-books">You have <%= @mybooks.length %> book.</p>
+    <p class="total-books">You have a total of <%= @mybooks.length %> book.</p>
   <% else %>
-    <p class="total-books">You have <%= @mybooks.length %> books.</p>    
+    <p class="total-books">You have a total of <%= @mybooks.length %> books.</p>    
   <% end %>
   <ul style="padding: 0">
   <% @mybooks.each do |book| %>

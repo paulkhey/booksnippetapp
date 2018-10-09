@@ -362,12 +362,11 @@ nav {
 
 .total-books {
   font-size: 1.2em;
-  font-weight: bold;
   text-align: center;
   margin-top: 0;
   margin-bottom: 1.5em;
   opacity: .2;
-  display: none;
+  font-weight: bold;
 }
 
 .books {
@@ -613,11 +612,8 @@ p#notice {
 
 footer {
   text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background: #fff;
+  display: none;
 }
 
 footer a {
