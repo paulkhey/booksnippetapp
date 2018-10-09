@@ -5,7 +5,6 @@ $success-hover: #00a733;
 $button-color: #084efa;
 $hover-color: #003bcc;
 $delete-color: #af0101;
-$delete-hover: #860000;
 
 .primary-btn {
   border: 0;
@@ -444,8 +443,8 @@ nav {
 }
 
 .books__action a.delete:hover {
-  background: $delete-hover;
-  border: 2px solid $delete-hover;
+  background: $delete-color;
+  border: 2px solid $delete-color;
   color: #fff;
 }
 
