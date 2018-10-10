@@ -147,12 +147,11 @@ nav {
 
 // search
 .search {
-  padding: 0 .7em;
+  padding: 0 .7em 4.5em;
 }
 
 .search.top {
   margin-top: 5em;
-  padding-bottom: 5em;
 }
 
 .search__bar {
@@ -374,7 +373,7 @@ nav {
 .books {
   max-width: 900px;
   margin: auto;
-  padding: 0 .5em;
+  padding: 0 1em 4.5em;
   margin-top: 2em;
 }
 
@@ -385,7 +384,6 @@ nav {
   flex-wrap: wrap;
   padding: 1.5em 0 1.7em;
   border-top: 1px solid #e7e7e7;
-  min-height: 9.5em;
   min-height: 0;
 }
 
@@ -454,7 +452,7 @@ nav {
 .book {
   max-width: 900px;
   margin: auto;
-  padding: 0 .5em;
+  padding: 0 1em 4.5em;
   margin-top: 2em;
 }
 
@@ -499,7 +497,6 @@ nav {
 .pagination {
   display: flex;
   justify-content: center;
-  padding-bottom: 4.5em;
 }
 
 .page-number {
@@ -701,7 +698,7 @@ footer a {
   
   .books__unit {
     flex-direction: column;
-    padding: 2.3em 0.5em 3.2em;
+    padding: 2.3em 1em 3.2em;
   }
   
   .books__detail {
