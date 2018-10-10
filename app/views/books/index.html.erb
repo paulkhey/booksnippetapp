@@ -1,9 +1,7 @@
 <p id="notice"><%= notice %></p>
 <section class="books">
-  <% if @mybooks.count == 1 %>
-    <p class="total-books">You have a total of <%= @mybooks.count %> book.</p>
-  <% else %>
-    <p class="total-books">You have a total of <%= @mybooks.count %> books.</p>    
+  <% if @mybooks.count > 0 %>
+    <p class="total-books">You have a total of <%= @mybooks.count %> <%= @mybooks.count > 1 ? 'books' : 'book' %>.</p>
   <% end %>
   <ul style="padding: 0">
   <% @mybooks.each do |book| %>
@@ -24,9 +22,9 @@
   </ul>
 	<% if @mybooks.empty? %>
   <div id="no-books">
-		<p>You have no books.</p>
+		<p>You need to add some books!</p>
 		<a href="/search">
-      <button class="primary-btn" type="button">Add some books!</button>
+      <button class="primary-btn" type="button">Add Books</button>
     </a>
   </div>
 	<% end %>
