@@ -1,6 +1,6 @@
-var books = require('google-books-search')
+const books = require('google-books-search')
 
-var options = {
+const options = {
     limit: 40,
     order: 'relevance'
 }
@@ -72,7 +72,7 @@ export default class extends Controller {
       event.preventDefault()
     }
 
-    var bookResults = []
+    const bookResults = []
     this.inputTarget.value = this.input
     this.output.textContent = `"${this.input}"`
 		document.getElementsByClassName('search')[0].setAttribute('data-search-index', 0);
@@ -104,9 +104,9 @@ export default class extends Controller {
     }
 
     function sliceBooks(arr, pages, size, bookSets) {
-      var j = 0
+      let j = 0
 
-      for (var i = 0; i < pages; i++) {
+      for (let i = 0; i < pages; i++) {
         bookSets[i] = arr.slice(j, j + size)
         j = j + size
       }
@@ -119,7 +119,7 @@ export default class extends Controller {
       <button class="primary-btn next-btn" data-action="search#next" aria-label="Next page">Next <span class="next">→</span></button>
       </div>`)
 
-      for (var n = 1; n <= pages; n++) {
+      for (let n = 1; n <= pages; n++) {
         $('.search__set:nth-of-type(' + n + ') .pagination .page-number').append(n)
       }
 
@@ -142,8 +142,8 @@ export default class extends Controller {
     }
 
     function paginateBooks(arr, size) {
-      var bookSets = []
-      var pages = Math.ceil(arr.length/size)
+      const bookSets = []
+      const pages = Math.ceil(arr.length/size)
       clearResults()
       sliceBooks(arr, pages, size, bookSets)
 
