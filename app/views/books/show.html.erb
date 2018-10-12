@@ -16,13 +16,15 @@
     <strong>Title:</strong>
     <%= note.title %>
   </p>
-
+  
   <p>
     <strong>Body:</strong>
     <%= note.body %>
   </p>
   <hr>
-
+  <%= @book.id %>
+  <!-- temporay need better solutions -->
+  <a href="<%= './' + @book.id.to_s + '/notes/'+ note.id.to_s  %>">d</a>
 <% end %>
   <%= will_paginate @mynotes %>
 </section>

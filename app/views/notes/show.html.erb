@@ -1,10 +1,11 @@
-show page for notes
-<br><br>
-
-<%= @note.title %>
-<%= @note.body %>
 
 
+<h1>Book: <%= @book.title %></h1>
+<p>Title: <%= @note.title %></p>
+<p>Body: <%= @note.body %></p>
+
+
+<%= link_to 'back to all book notes', book_path(@book), class: 'back-books'%>
 <h2>Add a Note:</h2>
 <%= form_for @note, url: book_note_path do |form| %>
   <p>

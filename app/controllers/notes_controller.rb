@@ -6,7 +6,12 @@ class NotesController < ApplicationController
   end
   
   def show
+    @book = Book.find(params[:book_id])
     @note = Note.find(params[:id])
+  end
+  
+  def new
+    @book = Book.find(params[:book_id])
   end
   
   def update 
