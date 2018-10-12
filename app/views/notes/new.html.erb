@@ -1,1 +1,16 @@
 new page for notes
+
+<h2>Add a Note:</h2>
+<%= form_for :note, url: book_notes_path do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -1,13 +1,17 @@
 class NotesController < ApplicationController
 
-  def new
+  def index
+    redirect_to books_path
+  end
   
+  def show
+    @note = Book.find(params[:book_id]).notes
   end
   
   def create
     @book = Book.find(params[:book_id])
     @note = @book.notes.create(note_params)
-    redirect_to book_path(@book)
+    redirect_to book_note_path(@note)
   end
  
   private
