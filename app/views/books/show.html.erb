@@ -16,4 +16,36 @@
     </div>
   </div>  
   <p class="soon">Notes feature coming soon.</p>
+  
+<h2>Comments</h2>
+<% @book.notes.each do |note| %>
+  <p>
+    <strong>Title:</strong>
+    <%= note.title %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= note.body %>
+  </p>
+
+<% end %>
+  
+<h2>Add a comment:</h2>
+<%= form_with(model: [ @book, @book.notes.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+     
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
 </section>
