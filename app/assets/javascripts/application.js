@@ -97,7 +97,7 @@ $(document).ready(function() {
       delayPagination(1500)
     }
   })
-
+  
   // changes pagination on refresh
   window.onload = function() {
     if (window.location.pathname.slice(0,6) == '/books') {
@@ -105,8 +105,9 @@ $(document).ready(function() {
     }
   }
   
-  $('html').on('click','a.show', function() {
+  $('html').on('click','li', function() {
     if (window.location.pathname.slice(0,6) == '/books') {
+      console.log('li')
       delayPagination(1000)
     }
   })
