@@ -84,9 +84,13 @@ export default class extends Controller {
         return url
       }
     }
+    
+    function removeChar(title) {
+      var newTitle = title.replace('&', 'and')
+      return newTitle
+    }
 
     function clearResults() {
-      // document.getElementsByClassName('search')[0].classList.add('full-height')
       document.getElementsByClassName('search')[0].classList.add('top')
       document.getElementById('no-search').classList.remove('hide')
       document.getElementById('search-results').classList.add('hide')
@@ -155,9 +159,9 @@ export default class extends Controller {
           $('.search__set:nth-of-type(' + (index + 1)  + ')').append(`
           <li class="search__book">
             <div class="search__book--detail">
-              <a href="${set.link}" target="_blank"><img class="search__image" src="${set.thumbnail}" alt="${set.title} cover"></a>
+              <a href="${set.link}" target="_blank"><img class="search__image" src="${set.thumbnail}" alt="${removeChar(set.title)} cover"></a>
               <div class="search__info">
-                <a href="${set.link}" target="_blank"><p class="search__title">${set.title}</p></a>
+                <a href="${set.link}" target="_blank"><p class="search__title">${removeChar(set.title)}</p></a>
                 <p class="search__author">by <span style="color: #003bcc; font-weight: bold">${set.author}</span></p>
                 <p class="search__date"><strong>Published:</strong> ${moment(set.publishedDate, 'YYYY-MM-DD').format('MMMM D, YYYY')}</p>
                 <p class="search__pages"><strong>Length:</strong> ${set.pageCount} Pages</p>
