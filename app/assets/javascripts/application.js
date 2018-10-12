@@ -105,8 +105,8 @@ $(document).ready(function() {
     }
   }
   
-  $('html').on('click','li', function() {
-    if (window.location.pathname.slice(0,6) == '/books') {
+  $('html').on('click','a', function() {
+    if (window.location.pathname.slice(0,6) !== '/books') {
       console.log('li')
       delayPagination(1000)
     }
