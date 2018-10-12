@@ -94,7 +94,11 @@ $(document).ready(function() {
     }
     // when /books.. is clicked and current window is not /books then replace pagination
     if ($(this).attr('href') == '/books' && window.location.pathname.slice(0,6) !== '/books') {
-      delayPagination(1500)
+      delayPagination(1200)
+    }
+    
+    if (window.location.pathname.slice(0,6) == '/books') {
+      delayPagination(1200)
     }
   })
   
@@ -108,14 +112,14 @@ $(document).ready(function() {
   $('html').on('click','a', function() {
     if (window.location.pathname.slice(0,6) !== '/books') {
       console.log('li')
-      delayPagination(1000)
+      delayPagination(1200)
     }
   })
   
   // changes when user hits prev or next
   $('html').on('click','.pagination a', function() {
     if (window.location.pathname.slice(0,6) == '/books') {
-      delayPagination(1000)
+      delayPagination(1200)
     }
   })
 })
