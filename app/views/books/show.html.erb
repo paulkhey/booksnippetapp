@@ -1,12 +1,3 @@
-<style>
-.soon {
-  text-align: center;
-  font-weight: bold;
-  opacity: .3;
-  margin-top: 2em;
-  font-size: 1.5em;
-}
-</style>
 <p id="notice"><%= notice %></p>
 <section class="book">
   <div class="book__unit">
@@ -15,8 +6,6 @@
       <p class="book__author">by <span style="color: #003bcc; font-weight: bold"><%= @book.author %></span></p>
     </div>
   </div>  
-  <p class="soon">Notes feature coming soon.</p>
-  
   <%= link_to 'Add a new note',  new_book_note_path(@book) %>
 <h2>Notes</h2>
 <% @book.notes.order('created_at DESC').each do |note| %>
