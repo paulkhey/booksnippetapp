@@ -10,8 +10,9 @@ class NotesController < ApplicationController
   end
   
   def update 
-  
-  
+    @note = Note.find(params[:id])
+    @note.update(note_params)
+    redirect_to book_note_path(@note)
   end
   
   def create
