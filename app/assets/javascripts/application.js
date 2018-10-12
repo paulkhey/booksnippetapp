@@ -93,20 +93,27 @@ $(document).ready(function() {
       clearResults()
     }
     // when /books.. is clicked and current window is not /books then replace pagination
-    if ($(this).attr('href') == '/books' && window.location.pathname.slice(0,7) !== '/books') {
+    if ($(this).attr('href') == '/books' && window.location.pathname.slice(0,6) !== '/books') {
       delayPagination(1500)
     }
   })
 
   // changes pagination on refresh
   window.onload = function() {
-    if (window.location.pathname.slice(0,7) == '/books') {
+    if (window.location.pathname.slice(0,6) == '/books') {
       changePagination()
     }
   }
+  
+  $('html').on('click','a.show', function() {
+    if (window.location.pathname.slice(0,6) == '/books') {
+      delayPagination(1000)
+    }
+  })
+  
   // changes when user hits prev or next
   $('html').on('click','.pagination a', function() {
-    if (window.location.pathname.slice(0,7) == '/books') {
+    if (window.location.pathname.slice(0,6) == '/books') {
       delayPagination(1000)
     }
   })
