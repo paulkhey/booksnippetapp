@@ -1,7 +1,8 @@
 class NotesController < ApplicationController
 
   def index
-    redirect_to books_path
+    @book = Book.find(params[:book_id])
+    redirect_to book_path(@book)
   end
   
   def show
