@@ -4,10 +4,7 @@
 <h2><%= @book.title %></h2>
 <p>by <%= @book.author %></p>
 <hr>
-
-<p>Notes below</p>
-
-
+<h2><%= @mynotes.count %> Notes below</h2>
 <% @mynotes.each do |note| %>
   <p>
     <strong>Title:</strong>
