@@ -12,7 +12,6 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
-    @book = Book.find(params[:id])
     @mynotes = @book.notes.paginate(:page => params[:page], :per_page => 1)
     @mynotes = @mynotes.order('created_at DESC')
   end
@@ -65,7 +64,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully deleted.' }
+      format.html { redirect_to books_path, notice: 'Book was successfully deleted.' }
       format.json { head :no_content }
     end
   end
