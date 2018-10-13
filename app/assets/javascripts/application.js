@@ -79,7 +79,6 @@ $(document).ready(function() {
   }
 
   function delayPagination(l) {
-
     for (var i = 0; i <= l;i = i + 200) {
       setTimeout(function() {
         changePagination()

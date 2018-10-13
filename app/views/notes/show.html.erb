@@ -4,9 +4,9 @@
 <p>Title: <%= @note.title %></p>
 <p>Body: <%= @note.body %></p>
 
-
 <%= link_to 'back to all book notes', book_path(@book), class: 'replace-pag'%>
-<h2>Add a Note:</h2>
+<h2>Edit a Note:</h2>
+
 <%= form_for @note, url: book_note_path do |form| %>
   <p>
     <%= form.label :title %><br>

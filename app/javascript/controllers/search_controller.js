@@ -170,7 +170,7 @@ export default class extends Controller {
             <button class="search__book--action primary-btn" aria-label="Add book">Add Book</button>
             <div class="search__book--added primary-btn success-btn hide" aria-label="Book added">Added!</div>
             <p class="search__book--warning hide" aria-label="Book warning" style="color: red">This book is already on your list.</p>
-            <a href="/books" class="search__book--notice hide" aria-label="Book notice" style="color: #00b939">Go to your list of books!</a>
+            <a href="/books" class="search__book--notice replace-pag hide" aria-label="Book notice" style="color: #00b939">Go to your list of books!</a>
           </li>`)
         })
       })

@@ -2,11 +2,10 @@ class NotesController < ApplicationController
 
   def index
     @book = Book.find(params[:book_id])
-    redirect_to book_path(@book)
+    @note = Note.find(params[:book_id])
   end
   
   def show
-    @book = Book.find(params[:book_id])
     @note = Note.find(params[:id])
   end
   

@@ -1,0 +1,8 @@
+<%= link_to 'back to all books', books_path, class: 'replace-pag' %>
+<%= link_to 'Add a new note',  new_book_note_path %>
+
+<h2><%= @book.title %></h2>
+<p>by <%= @book.author %></p>
+<hr>
+
+<p>Notes below</p>

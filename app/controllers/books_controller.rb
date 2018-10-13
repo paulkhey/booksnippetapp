@@ -12,8 +12,7 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
-    @mynotes = @book.notes.paginate(:page => params[:page], :per_page => 1)
-    @mynotes = @mynotes.order('created_at DESC')
+    redirect_to book_notes_path(@book)
   end
 
   # GET /books/new
