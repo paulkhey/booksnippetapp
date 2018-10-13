@@ -9,6 +9,7 @@
   
   
 <br>
+<%= link_to 'back to all books', books_path %>
 <%= link_to 'Add a new note',  new_book_note_path(@book) %>
 <h2>Notes</h2>
 <% @mynotes.each do |note| %>
@@ -24,8 +25,7 @@
   <hr>
   <%= @book.id %>
   <!-- temporay need better solutions -->
-  <%= @book_note_path %>
-  <a href="<%= './' + @book.id.to_s + '/notes/'+ note.id.to_s  %>">d</a>
+  <%= note.id %>
 <% end %>
   <%= will_paginate @mynotes %>
 </section>
