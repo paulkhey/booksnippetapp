@@ -3,7 +3,8 @@
 
 <h2><%= @book.title %></h2>
 <p>by <%= @book.author %></p>
-<hr>
+<br>
+<br>
 <h2><%= @mynotes.count %> Notes below</h2>
 <% @mynotes.each do |note| %>
   <p>
@@ -15,5 +16,6 @@
     <strong>Body:</strong>
     <%= note.body %>
   </p>
+  <%= link_to 'Link', book_note_path(@book, note), class: 'replace-pag'%>
   <hr>
 <% end %>
