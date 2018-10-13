@@ -1,39 +1,29 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
-  # GET /books
-  # GET /books.json
   def index
-    # @mybooks = Book.all
     @mybooks = Book.paginate(:page => params[:page], :per_page => 1)
     @mybooks =  @mybooks.order('created_at DESC')
   end
 
-  # GET /books/1
-  # GET /books/1.json
   def show
     redirect_to book_notes_path(@book)
   end
 
-  # GET /books/new
   def new
     redirect_to '/books'
     @book = Book.new
   end
 
-  # GET /books/1/edit
   def edit
     redirect_to @book
   end
 
-  # POST /books
-  # POST /books.json
   def create
     @book = Book.new(book_params)
 
     respond_to do |format|
       if @book.save
-        # format.html { redirect_to @book, notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -41,9 +31,7 @@ class BooksController < ApplicationController
       end
     end
   end
-
-  # PATCH/PUT /books/1
-  # PATCH/PUT /books/1.json
+  
   def update
     redirect_to @book
 
@@ -57,9 +45,7 @@ class BooksController < ApplicationController
       end
     end
   end
-
-  # DELETE /books/1
-  # DELETE /books/1.json
+  
   def destroy
     @book.destroy
     respond_to do |format|
@@ -69,12 +55,10 @@ class BooksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
     def book_params
       params.require(:book).permit(:title, :author, :cover, :link)
     end
