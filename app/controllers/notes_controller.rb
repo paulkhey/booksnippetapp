@@ -2,7 +2,7 @@ class NotesController < ApplicationController
 
   def index
     @book = Book.find(params[:book_id])
-    @note = Note.find(params[:book_id])
+    @mynotes = @book.notes.order('created_at DESC')
   end
   
   def show
