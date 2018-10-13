@@ -9,7 +9,7 @@
   
   
 <br>
-<%= link_to 'back to all books', books_path %>
+<%= link_to 'back to all books', books_path, class: 'replace-pag' %>
 <%= link_to 'Add a new note',  new_book_note_path(@book) %>
 <h2>Notes</h2>
 <% @mynotes.each do |note| %>
