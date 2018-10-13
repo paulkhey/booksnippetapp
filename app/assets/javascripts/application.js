@@ -87,35 +87,19 @@ $(document).ready(function() {
     }
   }
 
-  $('html').on('click','nav a', function() {
-    // clear search results when clicking links that are not search and if coming out of search
-    if ($(this).attr('href') != '/search' && window.location.pathname == '/search') {
-      clearResults()
-    }
-    // when /books.. is clicked and current window is not /books then replace pagination
-    if ($(this).attr('href') == '/books' && window.location.pathname.slice(0,6) !== '/books') {
-      delayPagination(1200)
-    }
-    
-    if (window.location.pathname.slice(0,6) == '/books') {
-      delayPagination(1200)
-    }
-  })
-  
-  // changes pagination on refresh
   window.onload = function() {
     if (window.location.pathname.slice(0,6) == '/books') {
       changePagination()
     }
   }
   
-  $('html').on('click','a', function() {
-    if (window.location.pathname.slice(0,6) !== '/books') {
-      console.log('li')
-      delayPagination(1200)
+  $('html').on('click','a.replace-pag', function() {
+    if ($(this).attr('href') != '/search' && window.location.pathname == '/search') {
+      clearResults()
     }
+    delayPagination(1200)
   })
-  
+
   // changes when user hits prev or next
   $('html').on('click','.pagination a', function() {
     if (window.location.pathname.slice(0,6) == '/books') {

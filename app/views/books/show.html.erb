@@ -24,6 +24,7 @@
   <hr>
   <%= @book.id %>
   <!-- temporay need better solutions -->
+  <%= @book_note_path %>
   <a href="<%= './' + @book.id.to_s + '/notes/'+ note.id.to_s  %>">d</a>
 <% end %>
   <%= will_paginate @mynotes %>
