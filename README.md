@@ -18,9 +18,3 @@ Note taking app for your books. Search for a book, add it to your list of books,
 ## Packages
 - `google-books-search`
 - `stimulus`
-
-## Links
-### `develop` branch
-- https://booksnippetapp-staging.herokuapp.com/
-### `master` branch
-- https://booksnippetapp.herokuapp.com/
