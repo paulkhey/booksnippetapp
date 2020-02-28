@@ -115,7 +115,7 @@ GEM
     normalize-rails (4.1.1)
     pg (1.1.4)
     public_suffix (3.1.1)
-    puma (3.12.1)
+    puma (3.12.3)
     rack (2.0.7)
     rack-proxy (0.6.5)
       rack
@@ -220,7 +220,7 @@ DEPENDENCIES
   momentjs-rails
   normalize-rails
   pg
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 5.2.1)
   sass-rails (~> 5.0)
   selenium-webdriver
